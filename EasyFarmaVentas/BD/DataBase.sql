@@ -1,59 +1,11 @@
-/*banco  banco (nombre,cuenta)
-bancomovimiento INSERT INTO bancomovimiento(codigo, fecha, monto, cuenta,tipo, observacion,cuentabancaria)
-saldobanco banco saldo
-datosfacturacion (rut,razonsocial,direccion,ciudad,fono,giro,cliente,periodo)
-logconexion codigo, usuario, ip, ipcliente, host, hostcliente, conectado
-logocurrencias fecha, hora, firmado, detalle
-impuestos(nombre,valoractual,operacion,kilo,excento)
-"INSERT INTO venta(documento, numerodocumento, fecha, domicilio, guiasalida, rutfacturacion, cliente, sucursal) VALUES (?, ?, ?, ?, ?, ?, ?, ?); ";
-"INSERT INTO productoventa(documento, numerodocumento, producto, proveedor, cantidad, valor) VALUES (?, ?, ?, ?, ?, ?); ";
-"INSERT INTO impuestosdocumentofinanciero(impuesto, numero, documento, valor, monto) VALUES (?, ?, ?, ?, ?); ";
-"UPDATE pedidodestino SET documento=?, numerodocumento=? where pedido=? and vendedor=? and guiasalida=?; ";
-"select cliente, rutfacturacion, metodo from pedido where codigo = ";
-SQL = "INSERT INTO pagodocumento(id, numero, documento, metodopago, fecha, monto, pagadopor, sucursal)VALUES (?, ?, ?, ?, ?, ?, ? ,?); ";
-String SQL2 = "INSERT INTO cajamovimiento(codigo, fecha, hora, cantidad, monto, metodo, cuenta,tipo, observacion,sucursal)VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
-String SQL3 = "INSERT INTO cajabodega(codigo, fecha, hora, cantidad, monto, metodo, cuenta, tipo, observacion, sucursal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?); ";
-String SQL = "INSERT INTO venta(documento, numerodocumento, fecha, domicilio, guiasalida, rutfacturacion, cliente, sucursal) VAL
-String SQL1 = "INSERT INTO productoventa(documento, numerodocumento, producto, proveedor, cantidad, valor) VALUES (?, ?, ?, ?, ?
-String SQL2 = "INSERT INTO impuestosdocumentofinanciero(impuesto, numero, documento, valor, monto) VALUES (?, ?, ?, ?, ?); ";
-String SQL = "INSERT INTO pagodocumento(id, numero, documento, metodopago, fecha, monto, pagadopor, sucursal)VALUES (?, ?, ?, ?,
-String SQL2 = "INSERT INTO cajamovimiento(codigo, fecha, hora, cantidad, monto, metodo, cuenta,tipo, observacion,sucursal)VALUES
-String SQL3 = "INSERT INTO cajabodega(codigo, fecha, hora, cantidad, monto, metodo, cuenta, tipo, observacion, sucursal) VALUES 
-String SQL = "INSERT INTO venta(documento, numerodocumento, fecha, rutfacturacion, cliente,sucursal) VALUES (?, ?, ?, ?, ?, ?); 
-String SQL1 = "INSERT INTO productoventa(documento, numerodocumento, producto, proveedor, cantidad, valor) VALUES (?, ?, ?, ?, ?
-String SQL2 = "INSERT INTO impuestosdocumentofinanciero(impuesto, numero, documento, valor, monto) VALUES (?, ?, ?, ?, ?); ";
-String SQL = "INSERT INTO venta(documento, numerodocumento, fecha, rutfacturacion, cliente, sucursal) VALUES (?, ?, ?, ?, ?,?); 
-String SQL1 = "INSERT INTO detalledocumento(nombre, cantidad, valor, numero, documento, servicio) VALUES (?, ?, ?, ?, ?, ?); ";
-String SQL2 = "INSERT INTO impuestosdocumentofinanciero(impuesto, numero, documento, valor, monto) VALUES (?, ?, ?, ?, ?); ";
-String SQL = "INSERT INTO venta(documento, numerodocumento, fecha, cliente,rutfacturacion, domicilio,sucursal) VALUES (?, ?, ?, 
-String SQL1 = "INSERT INTO productoventa(documento, numerodocumento, producto, proveedor, cantidad, valor) VALUES (?, ?, ?, ?, ?
-String SQL2 = "INSERT INTO impuestosdocumentofinanciero(impuesto, numero, documento, valor, monto) VALUES (?, ?, ?, ?, ?); ";
-String SQL3 = "insert into salida (codigo,fecha,motivo,observacion,sucursal) values (?,?,?,?,?); ";
-String SQL4 = "insert into detallesalida (idsalida, producto, proveedor,cantidad,valor,costo) values (?,?,?,?,?,?); ";
-String SQL = "INSERT INTO venta(documento, numerodocumento, fecha,domicilio, rutfacturacion, cliente,guiasalida,sucursal) VALUES
-String SQL1 = "INSERT INTO productoventa(documento, numerodocumento, producto, proveedor, cantidad, valor) VALUES (?, ?, ?, ?, ?
-String SQL2 = "INSERT INTO impuestosdocumentofinanciero(impuesto, numero, documento, valor, monto) VALUES (?, ?, ?, ?, ?); ";
-String SQL3 = "INSERT INTO detalledocumento(nombre, cantidad, valor, numero, documento) VALUES (?, ?, ?, ?, ?); ";
-String SQL = "INSERT INTO venta(documento, numerodocumento, fecha,domicilio, rutfacturacion, cliente,guiasalida,sucursal) VALUES
-String SQL1 = "INSERT INTO productoventa(documento, numerodocumento, producto, proveedor, cantidad, valor) VALUES (?, ?, ?, ?, ?
-String SQL2 = "INSERT INTO impuestosdocumentofinanciero(impuesto, numero, documento, valor, monto) VALUES (?, ?, ?, ?, ?); ";
-String SQL3 = "INSERT INTO detalledocumento(nombre, cantidad, valor, numero, documento) VALUES (?, ?, ?, ?, ?); ";
-String SQL = "INSERT INTO pagoproveedor( id, numerodocumento, documento, metodopago, fecha, monto, proveedor) VALUES (?, ?, ?, ?
-String SQL2 = "INSERT INTO cajamovimiento(codigo, fecha, hora, cantidad, monto, metodo, cuenta,tipo, observacion,causal,sucursal
-String SQL1 = "INSERT INTO bancomovimiento(codigo, fecha, monto, cuenta,tipo, observacion,cuentabancaria,causal)VALUES (?, ?, ?,
-String SQL = "INSERT INTO pagodocumento(id, numero, documento, metodopago, fecha, monto,sucursal)VALUES (?, ?, ?, ?, ?, ?,?); ";
-*/
-
---http://localhost/phpmyadmin/
---bd easyfarma
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2023 a las 02:15:33
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Servidor: localhost
+-- Tiempo de generación: 16-03-2023 a las 02:58:35
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,8 +18,36 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bdsys`
+-- Base de datos: `easy_farma_ventas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `banco`
+--
+
+CREATE TABLE `banco` (
+  `ID` bigint(20) DEFAULT NULL,
+  `Nombre` varchar(255) DEFAULT NULL,
+  `cuenta` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `bancomovimiento`
+--
+
+CREATE TABLE `bancomovimiento` (
+  `codigo` bigint(20) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `monto` bigint(20) DEFAULT NULL,
+  `cuenta` bigint(20) DEFAULT NULL,
+  `tipo` varchar(255) DEFAULT NULL,
+  `observacion` varchar(255) DEFAULT NULL,
+  `cuentabancaria` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -81,7 +61,47 @@ CREATE TABLE `bioequivalente` (
   `Productos` varchar(255) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL,
   `Orden` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cajabodega`
+--
+
+CREATE TABLE `cajabodega` (
+  `Id` bigint(20) DEFAULT NULL,
+  `codigo` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `hora` varchar(255) DEFAULT NULL,
+  `cantidad` varchar(255) DEFAULT NULL,
+  `monto` varchar(255) DEFAULT NULL,
+  `metodo` varchar(255) DEFAULT NULL,
+  `cuenta` varchar(255) DEFAULT NULL,
+  `tipo` varchar(255) DEFAULT NULL,
+  `observacion` varchar(255) DEFAULT NULL,
+  `sucursal` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cajamovimiento`
+--
+
+CREATE TABLE `cajamovimiento` (
+  `Id` bigint(20) DEFAULT NULL,
+  `codigo` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `hora` varchar(255) DEFAULT NULL,
+  `cantidad` varchar(255) DEFAULT NULL,
+  `monto` varchar(255) DEFAULT NULL,
+  `metodo` varchar(255) DEFAULT NULL,
+  `cuenta` varchar(255) DEFAULT NULL,
+  `tipo` varchar(255) DEFAULT NULL,
+  `observacion` varchar(255) DEFAULT NULL,
+  `sucursal` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -93,7 +113,7 @@ CREATE TABLE `cargo` (
   `IDCARGO` int(11) NOT NULL,
   `NOMBRECARGO` varchar(20) DEFAULT NULL,
   `ESTADO` bit(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cargo`
@@ -115,7 +135,7 @@ CREATE TABLE `categoria` (
   `categorias` varchar(255) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL,
   `Orden` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -131,7 +151,7 @@ CREATE TABLE `contacto` (
   `Ceular` varchar(255) DEFAULT NULL,
   `Direccion` varchar(255) DEFAULT NULL,
   `Suscripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -150,7 +170,25 @@ CREATE TABLE `cupones` (
   `Descuento` bigint(20) DEFAULT NULL,
   `Fecha` varchar(255) DEFAULT NULL,
   `Estado` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datosfacturacion`
+--
+
+CREATE TABLE `datosfacturacion` (
+  `Id` bigint(20) DEFAULT NULL,
+  `rut` varchar(255) DEFAULT NULL,
+  `razonsocial` varchar(255) DEFAULT NULL,
+  `direccion` varchar(255) DEFAULT NULL,
+  `ciudad` varchar(255) DEFAULT NULL,
+  `fono` varchar(255) DEFAULT NULL,
+  `giro` varchar(255) DEFAULT NULL,
+  `cliente` varchar(255) DEFAULT NULL,
+  `periodo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -164,7 +202,39 @@ CREATE TABLE `descuentodetalle` (
   `Nombre` varchar(255) DEFAULT NULL,
   `Precio` bigint(20) DEFAULT NULL,
   `LimiteUsos` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalledocumento`
+--
+
+CREATE TABLE `detalledocumento` (
+  `Id` bigint(20) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `cantidad` varchar(255) DEFAULT NULL,
+  `valor` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `documento` varchar(255) DEFAULT NULL,
+  `servicio` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detallesalida`
+--
+
+CREATE TABLE `detallesalida` (
+  `Id` bigint(20) DEFAULT NULL,
+  `idsalida` varchar(255) DEFAULT NULL,
+  `producto` varchar(255) DEFAULT NULL,
+  `proveedor` varchar(255) DEFAULT NULL,
+  `cantidad` varchar(255) DEFAULT NULL,
+  `valor` varchar(255) DEFAULT NULL,
+  `costo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -182,7 +252,7 @@ CREATE TABLE `empleado` (
   `TIPODOCUMENTO` char(1) DEFAULT NULL,
   `NUMERODOCUMENTO` char(11) DEFAULT NULL,
   `IDUSUARIO` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -196,7 +266,7 @@ CREATE TABLE `enfermedad` (
   `enfermedades` varchar(255) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL,
   `Orden` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -208,7 +278,35 @@ CREATE TABLE `formafarmaceutica` (
   `ID` bigint(20) DEFAULT NULL,
   `Nombre` varchar(255) DEFAULT NULL,
   `Activo` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `impuestos`
+--
+
+CREATE TABLE `impuestos` (
+  `Id` bigint(20) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `valoractual` varchar(255) DEFAULT NULL,
+  `operacion` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `impuestosdocumentofinanciero`
+--
+
+CREATE TABLE `impuestosdocumentofinanciero` (
+  `Id` bigint(20) DEFAULT NULL,
+  `impuesto` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `documento` varchar(255) DEFAULT NULL,
+  `valor` varchar(255) DEFAULT NULL,
+  `monto` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -220,7 +318,105 @@ CREATE TABLE `laboratorio` (
   `Id` bigint(20) DEFAULT NULL,
   `nombre` bigint(20) DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `logconexion`
+--
+
+CREATE TABLE `logconexion` (
+  `Id` bigint(20) DEFAULT NULL,
+  `usuario` varchar(255) DEFAULT NULL,
+  `ip` varchar(255) DEFAULT NULL,
+  `ipcliente` varchar(255) DEFAULT NULL,
+  `host` varchar(255) DEFAULT NULL,
+  `hostcliente` varchar(255) DEFAULT NULL,
+  `conectado` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `hora` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `logocurrencias`
+--
+
+CREATE TABLE `logocurrencias` (
+  `Id` bigint(20) DEFAULT NULL,
+  `usuario` varchar(255) DEFAULT NULL,
+  `ip` varchar(255) DEFAULT NULL,
+  `ipcliente` varchar(255) DEFAULT NULL,
+  `host` varchar(255) DEFAULT NULL,
+  `hostcliente` varchar(255) DEFAULT NULL,
+  `conectado` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `hora` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagodocumento`
+--
+
+CREATE TABLE `pagodocumento` (
+  `Id` bigint(20) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `documento` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `monto` varchar(255) DEFAULT NULL,
+  `pagadopor` varchar(255) DEFAULT NULL,
+  `sucursal` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pagoproveedor`
+--
+
+CREATE TABLE `pagoproveedor` (
+  `Id` bigint(20) DEFAULT NULL,
+  `numerodocumento` varchar(255) DEFAULT NULL,
+  `documento` varchar(255) DEFAULT NULL,
+  `metodopago` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `monto` varchar(255) DEFAULT NULL,
+  `proveedor` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedido`
+--
+
+CREATE TABLE `pedido` (
+  `Id` bigint(20) DEFAULT NULL,
+  `cliente` varchar(255) DEFAULT NULL,
+  `rutfacturacion` varchar(255) DEFAULT NULL,
+  `metodo` varchar(255) DEFAULT NULL,
+  `pedido` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidodestino`
+--
+
+CREATE TABLE `pedidodestino` (
+  `Id` bigint(20) DEFAULT NULL,
+  `documento` varchar(255) DEFAULT NULL,
+  `numerodocumento` varchar(255) DEFAULT NULL,
+  `vendedor` varchar(255) DEFAULT NULL,
+  `documentotributario` varchar(255) DEFAULT NULL,
+  `direccion` varchar(255) DEFAULT NULL,
+  `pedido` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -232,7 +428,7 @@ CREATE TABLE `principioactivo` (
   `Id` bigint(20) DEFAULT NULL,
   `nombre` bigint(20) DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -265,7 +461,52 @@ CREATE TABLE `producto` (
   `PrincipioActivo` varchar(255) DEFAULT NULL,
   `Laboratorio` varchar(255) DEFAULT NULL,
   `Bioequivalente` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productoventa`
+--
+
+CREATE TABLE `productoventa` (
+  `Id` bigint(20) DEFAULT NULL,
+  `documento` varchar(255) DEFAULT NULL,
+  `numerodocumento` varchar(255) DEFAULT NULL,
+  `producto` varchar(255) DEFAULT NULL,
+  `proveedor` varchar(255) DEFAULT NULL,
+  `cantidad` varchar(255) DEFAULT NULL,
+  `valor` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `hora` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `saldobanco`
+--
+
+CREATE TABLE `saldobanco` (
+  `ID` bigint(20) DEFAULT NULL,
+  `banco` varchar(255) DEFAULT NULL,
+  `saldo` bigint(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `salida`
+--
+
+CREATE TABLE `salida` (
+  `Id` bigint(20) DEFAULT NULL,
+  `codigo` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `motivo` varchar(255) DEFAULT NULL,
+  `observacion` varchar(255) DEFAULT NULL,
+  `sucursal` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -282,7 +523,7 @@ CREATE TABLE `usuario` (
   `IMAGEN` longblob DEFAULT NULL,
   `APELLIDOUSUARIO` varchar(45) DEFAULT NULL,
   `EMAIL` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -291,6 +532,24 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`IDUSUARIO`, `NOMBREUSUARIO`, `CLAVE`, `ESTADO`, `IDCARGO`, `IMAGEN`, `APELLIDOUSUARIO`, `EMAIL`) VALUES
 (1, 'nlastra@gmail.com', '123', b'1', 1, NULL, NULL, NULL),
 (3, 'bebo@gmail.com', '123', b'1', 1, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `venta`
+--
+
+CREATE TABLE `venta` (
+  `Id` bigint(20) DEFAULT NULL,
+  `documento` varchar(255) DEFAULT NULL,
+  `numerodocumento` varchar(255) DEFAULT NULL,
+  `domicilio` varchar(255) DEFAULT NULL,
+  `documentotributario` varchar(255) DEFAULT NULL,
+  `cliente` varchar(255) DEFAULT NULL,
+  `sucursal` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `hora` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
