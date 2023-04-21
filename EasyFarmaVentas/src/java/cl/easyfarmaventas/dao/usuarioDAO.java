@@ -5,7 +5,6 @@
 package cl.easyfarmaventas.dao;
 
 import cl.easyfarmaventas.conexion.conexion;
-import cl.easyfarmaventas.vo.cargoVO;
 import cl.easyfarmaventas.vo.usuarioVO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,44 +19,45 @@ import java.sql.Statement;
 public class usuarioDAO {
     public usuarioVO identificar(usuarioVO user) throws Exception{
         usuarioVO usu = null;
-        conexion con;
+        conexion con = null;
         Connection cn = null;
         Statement st = null;
         ResultSet rs = null;
-        String sql = "SELECT U.IDUSUARIO, C.NOMBRECARGO FROM USUARIO U "
-                + "INNER JOIN CARGO C ON U.IDCARGO = C.IDCARGO "
-                + "WHERE U.ESTADO = 1 AND U.NOMBREUSUARIO = '" + user.getNombreUsuario() + "' "
-                + "AND U.CLAVE = '"+ user.getClave() + "'";
+    
+        String sql = 
+                "SELECT u.idusuario, u.nombreusuario, u.clave, u.idcargo, u.apellidousuario, u.email, u.estado, c.nombrecargo \n" +
+"                FROM \"easyfarmaVentas\".usuario u inner JOIN \"easyfarmaVentas\".cargo c on u.idcargo = c.idcargo  \n" +
+"		 where u.estado = 1 \n" +
+"                and u.email = ? " +
+"                and u.clave = ? ;";
+       
+        try {
         con = new conexion();
-        try{
-            cn = con.conectar();
-            st = cn.createStatement();
-            rs = st.executeQuery(sql);
-            if(rs.next() == true){
+        cn = con.conectar();
+        //Statement stat = cn.createStatement();
+        int i = 1;
+        PreparedStatement stat = cn.prepareStatement(sql);
+        stat.setString(i++, user.getEmail());
+        stat.setString(i++, user.getClave());
+        rs = stat.executeQuery();
+        while(rs.next()){
+                i = 1;
                 usu = new usuarioVO();
-                usu.setId_usuario(rs.getInt("IDUSUARIO"));
-                usu.setNombreUsuario(user.getNombreUsuario());
-                usu.setCargo(new cargoVO());
-                usu.getCargo().setNombreCargo(rs.getString("NOMBRECARGO"));
-                usu.setEstado(true);
-            }
-        }catch(Exception e){
-            System.out.println("Error" + e.getMessage());
-        }finally{
-            if (rs !=null && rs.isClosed() == false){
-                rs.close();
-            }
-            rs = null;
-            if(st!= null && st.isClosed() == false){
-                st.close();
-                
-            }
-            st = null;
-            if(cn != null & cn.isClosed() == false){
-                cn.close();
-                
-            }
-            cn = null;
+                usu.setId_usuario(rs.getInt(i++));
+                usu.setNombreUsuario(rs.getString(i++));
+                usu.setClave(rs.getString(i++));
+                usu.setCodigoCargo(rs.getInt(i++));
+                usu.setApellido(rs.getString(i++));
+                usu.setEmail(rs.getString(i++));
+                usu.setEstado(rs.getInt(i++));
+                usu.setNombreCargo(rs.getString(i++));
+        }
+        
+            rs.close();
+            stat.close();
+        }
+        catch (Exception ex) {
+            System.out.println("Error: " + ex);
         }
         return usu;
     }
@@ -91,16 +91,15 @@ public class usuarioDAO {
             registroUsuario.setApellido(apellido);
             registroUsuario.setNombreUsuario(correo);
             registroUsuario.setClave(clave);
-            registroUsuario.setEstado(true);
-            registroUsuario.setCargo(new cargoVO());
-            registroUsuario.getCargo().setCodigo(2);
+            registroUsuario.setEstado(1);
+            registroUsuario.setCodigoCargo(2);
             System.out.println("registraaaao nombre "+registroUsuario.getId_usuario());
             System.out.println("registro nombre "+registroUsuario.getApellido());
             System.out.println("registro nombre "+registroUsuario.getNombre());
             System.out.println("registro nombre "+registroUsuario.getNombreUsuario());
             System.out.println("registro nombre "+registroUsuario.getClave());
-            System.out.println("registro nombre "+registroUsuario.isEstado());
-            System.out.println("registro nombre "+registroUsuario.getCargo().getCodigo());
+            System.out.println("registro nombre "+registroUsuario.getEstado());
+            System.out.println("registro nombre "+registroUsuario.getCodigoCargo());
             // registroUsuario.setImagen(inputStream);
             
             
@@ -109,9 +108,8 @@ public class usuarioDAO {
             ps.setString(3, registroUsuario.getApellido());
             ps.setString(4, registroUsuario.getEmail());
             ps.setString(5, registroUsuario.getClave());
-            ps.setBoolean(6, registroUsuario.isEstado());
-            cargoVO tipoCargo = new cargoVO();
-            ps.setInt(7, registroUsuario.getCargo().getCodigo());
+            ps.setInt(6, registroUsuario.getEstado());
+            ps.setInt(7, registroUsuario.getCodigoCargo());
             ps.executeUpdate();
             respuesta = "Exito ";
         }catch(SQLException ex){

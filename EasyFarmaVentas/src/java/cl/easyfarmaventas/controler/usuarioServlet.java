@@ -61,10 +61,6 @@ public class usuarioServlet extends HttpServlet {
                         String mensaje = dao.Agregar_Usuario(inputFirstName, inputLastName, inputEmail, inputPassword);
                         request.setAttribute("msje", "Registro con " + mensaje);
                         request.getRequestDispatcher("index.jsp").forward(request, response);
-                        
-                        
-                        
-                         
                         break;
                     case "cerrar":
                         cerrarsession(request, response);
@@ -146,12 +142,13 @@ public class usuarioServlet extends HttpServlet {
         usuario = this.obtenerUsuario(request);
         dao = new usuarioDAO();
         usuario = dao.identificar(usuario);
-        if (usuario != null && usuario.getCargo().getNombreCargo().equals("ADMINISTRADOR")) {
+        if (usuario != null && usuario.getNombreCargo().equals("ADMINISTRADOR")) {
             sesion = request.getSession();
             sesion.setAttribute("usuario", usuario);
+            request.setAttribute("usuario", usuario);
             request.setAttribute("msje", "Bienvenido al sistema");
-            this.getServletConfig().getServletContext().getRequestDispatcher("/principal.jsp").forward(request, response);
-        } else if (usuario != null && usuario.getCargo().getNombreCargo().equals("VENDEDOR")) {
+            this.getServletConfig().getServletContext().getRequestDispatcher("/dashboard.jsp").forward(request, response);
+        } else if (usuario != null && usuario.getNombreCargo().equals("VENDEDOR")) {
             sesion = request.getSession();
             sesion.setAttribute("vendedor", usuario);
             this.getServletConfig().getServletContext().getRequestDispatcher("/formVendedor.jsp").forward(request, response);
@@ -174,7 +171,7 @@ public class usuarioServlet extends HttpServlet {
 
     private usuarioVO obtenerUsuario(HttpServletRequest request) {
         usuarioVO u = new usuarioVO();
-        u.setNombreUsuario(request.getParameter("correo"));
+        u.setEmail(request.getParameter("correo"));
         u.setClave(request.getParameter("password"));
         return u;
     }

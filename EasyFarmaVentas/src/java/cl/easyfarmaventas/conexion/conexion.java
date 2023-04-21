@@ -6,25 +6,36 @@ package cl.easyfarmaventas.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nlast
  */
 public class conexion {
-    private final String baseDatos = "bdsys";
-    private final String servidor = "jdbc:mysql://localhost/" + baseDatos;
-    private final String usuario = "root";
-    private final String clave = "";
-    
-    public Connection conectar(){
-        Connection cn = null;
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            cn = DriverManager.getConnection(servidor, usuario, clave);
-        }catch(Exception e){
-            System.out.println("Error al conectar" + e.getMessage());
+
+  public Connection conectar() {
+        Connection connection = null;
+        try {
+            // Cargar el controlador JDBC
+            Class.forName("org.postgresql.Driver");
+            // Conexión a la base de datos
+            String url = "jdbc:postgresql://localhost:5432/easyfarmaVentas";
+            String usuario = "postgres";
+            String contraseña = "1234";
+            connection = DriverManager.getConnection(url, usuario, contraseña);
+             if(connection != null){
+                System.out.println("conexion es correcta");
+            }else{
+                System.out.println("conexion erronea");
         }
-        return cn;
+        } catch (SQLException ex) {
+            Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return connection;
     }
 }

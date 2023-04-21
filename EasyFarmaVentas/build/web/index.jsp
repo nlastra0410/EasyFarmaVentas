@@ -38,7 +38,7 @@
 
                 <!-- Slide 1 -->
                 <div class="slide fade ">
-                    <img src="dist/img/slide3.jpg" alt="">
+                    <img src="dist/img/portada2.png" alt="">
 
                     <div class="contenido-slider">
 
@@ -46,7 +46,7 @@
                             <img src="dist/img/easyfarma.png" alt="">
                         </div>
 
-                        <p class="slider-texto">
+                        <p class="slider-texto" style="color:black">
                             Todo lo que tu familia necesita
                         </p>
 
@@ -56,7 +56,7 @@
 
                 <!-- Slide 2 -->
                 <div class="slide fade">
-                    <img src="dist/img/img-slider-login.jpg" alt="">
+                    <img src="dist/img/portada1.png" alt="">
 
                     <div class="contenido-slider">
 
@@ -64,7 +64,7 @@
                             <img src="dist/img/easyfarma.png" alt="">
                         </div>
 
-                        <p class="slider-texto">
+                        <p class="slider-texto" style="color:black">
                             Todo lo que tu familia necesita
                         </p>
 
@@ -91,9 +91,9 @@
         <!--========================================
             Formularios
         ==========================================-->
-        <div class="contenedor-texto">
+        <div class="contenedor-texto" style="background-color: #e7ecfe;">
 
-            <div class="contenedor-form">
+            <div class="contenedor-form" >
 
                 <h1 class="titulo">¡Bienvenido a Easy Farma!</h1>
                 <p class="descripcion">Ingresa a tu cuenta para iniciar el uso del sistema.</p>
@@ -107,7 +107,7 @@
                 <!--========================================
                     Formulario logue
                 ==========================================-->
-                <form action="srvUsuario" method="POST" id="formLogin" class="formulario active">
+                <form action="usuarioServlet" method="POST" id="formLogin" class="formulario active">
 
                     <div class="error-text">
                         <p>aqui los errores del formualrio</p>
@@ -129,7 +129,7 @@
                  <!--========================================
                     Formulario de Registro
                 ==========================================-->
-                <form action="" method="POST" id="formRegistro" class="formulario ">
+                <form action="usuarioServlet" method="POST" id="formRegistro" class="formulario ">
                 <input type="hidden" name="accion" id="accion" value="registrar">
                     <div class="error-text ">
                         
@@ -156,7 +156,7 @@
                      <label class="contenedor-cbx animate">
                         He leído y acepto los
                         <a href="#" class="link">Términos y Condiciones</a>
-                        <a href="#" class="link">y Política de privacidad de mi Tienda</a>
+                        <a href="#" class="link">y Política de privacidad de mi Aplicativo</a>
 
                         <input type="checkbox" name="cbx_terminos" >
                         <span class="cbx-marca"></span>

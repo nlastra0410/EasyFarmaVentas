@@ -14,12 +14,15 @@ public class usuarioVO {
     private int id_usuario;
     private String nombreUsuario;
     private String clave;
-    private boolean estado;
-    private cargoVO cargo;
+    private Integer estado;
+     
     private String nombre;
     private String apellido;
     private InputStream imagen;
     private String email;
+    private int codigoCargo;
+    private String nombreCargo;
+    private boolean estadoCargo;
 
     public int getId_usuario() {
         return id_usuario;
@@ -45,22 +48,15 @@ public class usuarioVO {
         this.clave = clave;
     }
 
-    public boolean isEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 
-    public cargoVO getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(cargoVO cargo) {
-        this.cargo = cargo;
-    }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -92,6 +88,32 @@ public class usuarioVO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public int getCodigoCargo() {
+        return codigoCargo;
+    }
+
+    public void setCodigoCargo(int codigoCargo) {
+        this.codigoCargo = codigoCargo;
+    }
+
+    public String getNombreCargo() {
+        return nombreCargo;
+    }
+
+    public void setNombreCargo(String nombreCargo) {
+        this.nombreCargo = nombreCargo;
+    }
+
+    public boolean isEstadoCargo() {
+        return estadoCargo;
+    }
+
+    public void setEstadoCargo(boolean estadoCargo) {
+        this.estadoCargo = estadoCargo;
+    }
+
+    
     
     
 }
