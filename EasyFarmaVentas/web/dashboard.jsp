@@ -27,7 +27,7 @@
     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
-        <a href="index.html">
+        <a href="dashboard.jsp">
             <img style=" height:56px ; width:46 " src="assets/images/logo/easyfarma.png" alt="logo" />
         </a>
       </div>
@@ -59,16 +59,16 @@
                 <a href="ventas.jsp"> Sistema de Ventas </a>
               </li>
               <li>
-                <a href="productos.jsp" > Productos </a>
+                <a href="traeProductos.jsp" > Productos </a>
               </li>
               <li>
-                <a href="empleados.jsp" > Empleados </a>
+                <a href="traeEmpleados.jsp" > Empleados </a>
               </li>
               <li>
-                <a href="clientes.jsp" > Clientes </a>
+                <a href="traeClientes.jsp" > Clientes </a>
               </li>
               <li>
-                <a href="proveedores.jsp" > Proveedores </a>
+                <a href="traeProveedores.jsp" > Proveedores </a>
               </li>
               <li>
                 <a href="calendario.jsp" > Calendario </a>

@@ -1929,7 +1929,7 @@ h6,
   position: relative;
 }
 .header .header-left .header-search form input {
-  width: 100%;
+  width: 1100px;
   border: 1px solid #efefef;
   background: rgba(239, 239, 239, 0.5);
   border-radius: 10px;

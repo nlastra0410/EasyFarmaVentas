@@ -76,7 +76,7 @@
         <!-- ======== sidebar-nav start =========== -->
         <aside class="sidebar-nav-wrapper">
             <div class="navbar-logo">
-                <a href="index.html">
+                <a href="dashboard.jsp">
                     <img style=" height:56px ; width:46 " src="assets/images/logo/easyfarma.png" alt="logo" />
                 </a>
             </div>
@@ -100,43 +100,43 @@
                             <span class="text">Menú</span>
                         </a>
                         <ul id="ddmenu_1" class="active dropdown-nav">
-                            <li>
-                                <a href="dashboard.jsp" > Inicio </a>
-                            </li>
-                            <li>
-                                <a href="ventas.jsp"> Sistema de Ventas </a>
-                            </li>
-                            <li>
-                                <a href="productos.jsp" > Productos </a>
-                            </li>
-                            <li>
-                                <a href="empleados.jsp" > Empleados </a>
-                            </li>
-                            <li>
-                                <a href="clientes.jsp" > Clientes </a>
-                            </li>
-                            <li>
-                                <a href="proveedores.jsp" > Proveedores </a>
-                            </li>
-                            <li>
-                                <a href="calendario.jsp" > Calendario </a>
-                            </li>
-                            <li>
-                                <a href="estadisticas.jsp" > Estadisticas </a>
-                            </li>
-                            <li>
-                                <a href="inventario.jsp" > Inventario </a>
-                            </li>
-                            <li>
-                                <a href="ventaOnline.jsp" > Venta Online </a>
-                            </li>
-                            <li>
-                                <a href="ajustes.jsp" > Ajustes </a>
-                            </li>
-                            <li>
-                                <a href="mensajes.jsp" > Mensajes </a>
-                            </li>
-                        </ul>
+              <li>
+                <a href="dashboard.jsp" > Inicio </a>
+              </li>
+              <li>
+                <a href="ventas.jsp"> Sistema de Ventas </a>
+              </li>
+              <li>
+                <a href="traeProductos.jsp" > Productos </a>
+              </li>
+              <li>
+                <a href="traeEmpleados.jsp" > Empleados </a>
+              </li>
+              <li>
+                <a href="traeClientes.jsp" > Clientes </a>
+              </li>
+              <li>
+                <a href="traeProveedores.jsp" > Proveedores </a>
+              </li>
+              <li>
+                <a href="calendario.jsp" > Calendario </a>
+              </li>
+              <li>
+                <a href="estadisticas.jsp" > Estadisticas </a>
+              </li>
+              <li>
+                <a href="inventario.jsp" > Inventario </a>
+              </li>
+              <li>
+                <a href="ventaOnline.jsp" > Venta Online </a>
+              </li>
+              <li>
+                <a href="ajustes.jsp" > Ajustes </a>
+              </li>
+              <li>
+                <a href="mensajes.jsp" > Mensajes </a>
+              </li>
+            </ul>
                     </li>
 
                 </ul>
@@ -383,28 +383,28 @@
                         <div class="icon-card mb-30">
                             <div class="imagenes-container ">
                                 <div class="imagen">
-                                    <img src="iconosoposibles/Venta.gif" alt="Post"  id="btn_accion" name="btn_accion"/> Venta
+                                    <img style=" width: 30px; height: 30px;" src="iconosoposibles/Venta.gif" alt="Post"  id="btn_accion" name="btn_accion"/> Venta
                                 </div>
                                 <div class="imagen">
-                                    <img src="iconosoposibles/guardado.png" alt="Guardado"  id="btn_guardar" name="btn_guardar"/> Guardado
+                                    <img style=" width: 30px; height: 30px;" src="iconosoposibles/guardado.png" alt="Guardado"  id="btn_guardar" name="btn_guardar"/> Guardado
                                 </div>
                                 <div class="imagen">
-                                    <img src="iconosoposibles/Cambio.png" alt="Cambio" id="btn_cambio" name="btn_cambio" /> Cambio
+                                    <img style=" width: 30px; height: 30px;" src="iconosoposibles/Cambio.png" alt="Cambio" id="btn_cambio" name="btn_cambio" /> Cambio
                                 </div>
                                 <div class="imagen">
-                                    <img src="iconosoposibles/devolucion.png" alt="Devolucion" id="btn_dev" name="btn_dev"  /> Devolución
+                                    <img style=" width: 30px; height: 30px;" src="iconosoposibles/devolucion.png" alt="Devolucion" id="btn_dev" name="btn_dev"  /> Devolución
                                 </div>
                                 <div class="imagen">
-                                    <img src="iconosoposibles/boleta.png" alt="Boleta" id="btn_boleta" name="btn_boleta" /> Boleta
+                                    <img style=" width: 30px; height: 30px;" src="iconosoposibles/boleta.png" alt="Boleta" id="btn_boleta" name="btn_boleta" /> Boleta
                                 </div>
                                 <div class="imagen">
-                                    <img src="iconosoposibles/Mayoreo.png" alt="Mayoreo" id="btn_mayoreo" name="btn_mayoreo" /> Mayoreo
+                                    <img style=" width: 30px; height: 30px;" src="iconosoposibles/Mayoreo.png" alt="Mayoreo" id="btn_mayoreo" name="btn_mayoreo" /> Mayoreo
                                 </div>
                                 <div class="imagen">
-                                    <img src="iconosoposibles/Corte.png" alt="Cierre" id="btn_cierre" name="btn_cierre"  /> Cierre
+                                    <img style=" width: 30px; height: 30px;" src="iconosoposibles/Corte.png" alt="Cierre" id="btn_cierre" name="btn_cierre"  /> Cierre
                                 </div>
                                 <div class="imagen">
-                                    <img src="iconosoposibles/calculadora.gif" alt="Calculadora" id="btn_calculadora" name="btn_calculadora"/> Calculadora
+                                    <img style=" width: 30px; height: 30px;" src="iconosoposibles/calculadora.gif" alt="Calculadora" id="btn_calculadora" name="btn_calculadora"/> Calculadora
                                 </div>
                             </div>
                             <!-- End Icon Cart -->
