@@ -24,12 +24,13 @@ public class conexion {
             // Conexión a la base de datos
             //jdbc:mysql://localhost:3306/tu_basedatos";
             //"jdbc:postgresql://localhost:5432/easyfarmaVentas";
-           // String url = "jdbc:mysql://localhost:3306/easyfarmaventas";
+             String url = "jdbc:mysql://localhost:3306/easyvent_easyfarmaventas";
             //sitio web hosting easyvent_easyfarmaventas
-            String url = "jdbc:mysql://localhost:3306/easyvent_easyfarmaventas";
-            String usuario = "easyvent";
-            //String contraseña = "";
-            String contraseña = "fRS4d.;Sm85h6Z";
+            //String url = "jdbc:mysql://localhost:3306/easyvent_easyfarmaventas";
+            //String usuario = "easyvent";
+            String usuario = "root";
+            String contraseña = "";
+            //String contraseña = "fRS4d.;Sm85h6Z";
             connection = DriverManager.getConnection(url, usuario, contraseña);
              if(connection != null){
                 System.out.println("conexion es correcta");
