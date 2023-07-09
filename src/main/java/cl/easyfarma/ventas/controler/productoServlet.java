@@ -130,8 +130,13 @@ public class productoServlet extends HttpServlet {
                         precioConvenioStr == null || ventaPresencialStr == null || ventaOnlineStr == null || recetaStr == null ||
                         recetaRetenidaStr == null || retiroTiendaStr == null) {
                         // Redirigir al usuario a un JSP que muestre un mensaje de error o realice alguna acción adecuada
-                        request.getRequestDispatcher("error.jsp").forward(request, response);
+                        System.out.println("if");
+                        String jspPath = "/productos/productos.jsp";
+                        RequestDispatcher dispatcher = request.getRequestDispatcher(jspPath);
+                        dispatcher.forward(request, response);
+                        //request.getRequestDispatcher("error.jsp").forward(request, response);
                     } else {
+                        System.out.println("else");
                         Cantidad = Integer.parseInt(CantidadStr);
                         Minimo = Integer.parseInt(MinimoStr);
                         Maximo = Integer.parseInt(MaximoStr);
@@ -151,10 +156,7 @@ public class productoServlet extends HttpServlet {
                         receta = Boolean.parseBoolean(recetaStr);
                         recetaRetenida = Boolean.parseBoolean(recetaRetenidaStr);
                         retiroTienda = Boolean.parseBoolean(retiroTiendaStr);
-                    }
-                    
-
-                    productoDAO producto = new productoDAO();
+                        productoDAO producto = new productoDAO();
                     if(accionEdit.equals("editar"))accion = "noagregar";
                     String mensaje = "";
                     System.out.println("zxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
@@ -184,6 +186,10 @@ public class productoServlet extends HttpServlet {
                         RequestDispatcher dispatcher = request.getRequestDispatcher(jspPath);
                         dispatcher.forward(request, response);
                     }
+                    }
+                    
+
+                    
                     
                     break;
                 case "actualizar":
