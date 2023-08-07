@@ -41,7 +41,7 @@
                 <div class="title mb-30">
                   <h6>Agregar Proveedores</h6>
                 </div>
-                  <form action="proveedorServlet" method="post">
+                  <form action="${pageContext.request.contextPath}/proveedorServlet" method="post">
                       <input type="hidden" name="accion" id="accion" value="agregar">
                   <div class="row">
                     <div class="col-12">

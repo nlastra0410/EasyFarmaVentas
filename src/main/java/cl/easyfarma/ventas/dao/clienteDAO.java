@@ -408,5 +408,53 @@ public String Editar_Cliente(String rutE, String Activo) {
                     respuesta = "Error " + ex.getMessage();
                 }         
                 return lista;
-            }  
+            }
+        
+public List<String> buscarClientesPlus(String varRut) {
+    List<String> nombres = new ArrayList<>();
+    Connection cn = null;
+    CallableStatement statement = null;
+    ResultSet resultSet = null;
+
+    try {
+        conexion con = new conexion();
+        cn = con.conectar();
+        statement = cn.prepareCall("{CALL obtenerClientePlus(?)}");
+        statement.setString(1, varRut);
+        resultSet = statement.executeQuery();
+
+        while (resultSet.next()) {
+            String nombre = resultSet.getString("nombre");
+            nombres.add(nombre);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        // Cerrar recursos en orden inverso de apertura
+        if (resultSet != null) {
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (statement != null) {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (cn != null) {
+            try {
+                cn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    return nombres;
+}
+
 }

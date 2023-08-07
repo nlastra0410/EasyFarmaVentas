@@ -36,13 +36,57 @@ private String  precio1;
 private String  precio2;
 private String  precioSuscripcion;
 private String  precioConvenio;
-private String  ventaPresencial;
-private String  ventaOnline;
-private String  RequiereReceta;
-private String  recetaRetenida;
-private String  retiroTienda;
+private boolean ventaPresencial;
+private boolean ventaOnline;
+private boolean RequiereReceta;
+private boolean recetaRetenida;
+private boolean retiroTienda;
 private String  descripcion;
 private String  principioactivo;
+
+    public boolean isVentaPresencial() {
+        return ventaPresencial;
+    }
+
+    public void setVentaPresencial(boolean ventaPresencial) {
+        this.ventaPresencial = ventaPresencial;
+    }
+
+    public boolean isVentaOnline() {
+        return ventaOnline;
+    }
+
+    public void setVentaOnline(boolean ventaOnline) {
+        this.ventaOnline = ventaOnline;
+    }
+
+    public boolean isRequiereReceta() {
+        return RequiereReceta;
+    }
+
+    public void setRequiereReceta(boolean RequiereReceta) {
+        this.RequiereReceta = RequiereReceta;
+    }
+
+    public boolean isRecetaRetenida() {
+        return recetaRetenida;
+    }
+
+    public void setRecetaRetenida(boolean recetaRetenida) {
+        this.recetaRetenida = recetaRetenida;
+    }
+
+    public boolean isRetiroTienda() {
+        return retiroTienda;
+    }
+
+    public void setRetiroTienda(boolean retiroTienda) {
+        this.retiroTienda = retiroTienda;
+    }
+
+
+
+
 
     public String getPrincipioactivo() {
         return principioactivo;
@@ -252,46 +296,6 @@ private String  principioactivo;
 
     public void setPrecioConvenio(String precioConvenio) {
         this.precioConvenio = precioConvenio;
-    }
-
-    public String getVentaPresencial() {
-        return ventaPresencial;
-    }
-
-    public void setVentaPresencial(String ventaPresencial) {
-        this.ventaPresencial = ventaPresencial;
-    }
-
-    public String getVentaOnline() {
-        return ventaOnline;
-    }
-
-    public void setVentaOnline(String ventaOnline) {
-        this.ventaOnline = ventaOnline;
-    }
-
-    public String getRequiereReceta() {
-        return RequiereReceta;
-    }
-
-    public void setRequiereReceta(String RequiereReceta) {
-        this.RequiereReceta = RequiereReceta;
-    }
-
-    public String getRecetaRetenida() {
-        return recetaRetenida;
-    }
-
-    public void setRecetaRetenida(String recetaRetenida) {
-        this.recetaRetenida = recetaRetenida;
-    }
-
-    public String getRetiroTienda() {
-        return retiroTienda;
-    }
-
-    public void setRetiroTienda(String retiroTienda) {
-        this.retiroTienda = retiroTienda;
     }
 
     public String getDescripcion() {

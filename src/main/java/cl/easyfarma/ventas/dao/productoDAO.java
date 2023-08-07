@@ -336,7 +336,7 @@ public class productoDAO {
         if (rs.next()) {
             producto.setSKU(rs.getString("SKU"));
             producto.setNombre(rs.getString("nombre"));
-            producto.setActivo(rs.getString("Activo"));
+            producto.setPrincipioactivo(rs.getString("principioactivo"));
             producto.setContenido(rs.getString("Contenido"));
             producto.setUsos(rs.getString("Usos"));
             producto.setContraindicaciones(rs.getString("Contraindicaciones"));
@@ -358,11 +358,11 @@ public class productoDAO {
             producto.setPrecio2(rs.getString("precio2"));
             producto.setPrecioSuscripcion(rs.getString("precioSuscripcion"));
             producto.setPrecioConvenio(rs.getString("precioConvenio"));
-            producto.setVentaPresencial(rs.getString("ventaPresencial"));
-            producto.setVentaOnline(rs.getString("ventaOnline"));
-            producto.setRequiereReceta(rs.getString("RequiereReceta"));
-            producto.setRecetaRetenida(rs.getString("recetaRetenida"));
-            producto.setRetiroTienda(rs.getString("retiroTienda"));
+            producto.setVentaPresencial(rs.getBoolean("ventaPresencial"));
+            producto.setVentaOnline(rs.getBoolean("ventaOnline"));
+            producto.setRequiereReceta(rs.getBoolean("RequiereReceta"));
+            producto.setRecetaRetenida(rs.getBoolean("recetaRetenida"));
+            producto.setRetiroTienda(rs.getBoolean("retiroTienda"));
             producto.setDescripcion(rs.getString("descripcion"));
             
             respuesta = "Todo OK";
@@ -561,7 +561,7 @@ System.out.println("editar productos 341");
         return respuesta;
     }*/
     
-    public String Editar_Producto(String CodSKU, String nombreProd, String PrincipioActivo, String Contenido, String Usos, String Contraindicaciones, String Departamento,String EscribirAqui, Integer Cantidad, Integer Minimo, Integer Maximo, String Sucursal, String EscribirAquiDesc, Double precioCompra, Double iva, Double impuesto2, Double impuesto3, Double margen, Double descuento, Double precioSugerido, Double precio1, Double precio2, Double precioSuscripcion, Double precioConvenio, Boolean ventaPresencial, Boolean ventaOnline, Boolean receta, Boolean recetaRetenida, Boolean retiroTienda, String descripcion) {
+   public String Editar_Producto(String CodSKU, String nombreProd, String PrincipioActivo, String Contenido, String Usos, String Contraindicaciones, String Departamento,String EscribirAqui, Integer Cantidad, Integer Minimo, Integer Maximo, String Sucursal, String EscribirAquiDesc, Double precioCompra, Double iva, Double impuesto2, Double impuesto3, Double margen, Double descuento, Double precioSugerido, Double precio1, Double precio2, Double precioSuscripcion, Double precioConvenio, Boolean ventaPresencial, Boolean ventaOnline, Boolean receta, Boolean recetaRetenida, Boolean retiroTienda, String descripcion) {
     usuarioVO usu = null;
     conexion con;
     Connection cn = null;
@@ -589,6 +589,7 @@ System.out.println("editar productos 341");
         statement.setInt(10, Minimo);
         statement.setInt(11, Maximo);
         statement.setString(12, Sucursal);
+        System.out.println("EscribirAquiDesc DAO " + EscribirAquiDesc);
         statement.setString(13, EscribirAquiDesc);
         statement.setDouble(14, precioCompra);
         statement.setDouble(15, iva);
@@ -607,8 +608,6 @@ System.out.println("editar productos 341");
         statement.setBoolean(28, recetaRetenida);
         statement.setBoolean(29, retiroTienda);
         statement.setString(30, descripcion);
-        
-        statement.registerOutParameter(31, Types.VARCHAR); // Parámetro de salida
         
         statement.executeUpdate();
         
@@ -631,6 +630,7 @@ System.out.println("editar productos 341");
     }
     return respuesta;
 }
+
 
     
     /*
@@ -694,15 +694,13 @@ System.out.println("editar productos 341");
     try {
         cn = con.conectar();
         System.out.println("editar productos 308");
-        CallableStatement statement = cn.prepareCall("{ CALL Editar_Producto_Eliminar(?, ?) }");
+        CallableStatement statement = cn.prepareCall("{ CALL Editar_Producto_Eliminar(?) }");
         statement.setString(1, CodSKU);
-        
-        statement.registerOutParameter(2, Types.VARCHAR); // Parámetro de salida
         
         statement.executeUpdate();
         
-        respuesta = statement.getString(2);
-        
+        respuesta = statement.getString("respuesta");
+        System.out.println("Respuesta del procedimiento: " + respuesta);
         statement.close();
         cn.close();
     } catch (SQLException ex) {
@@ -783,6 +781,25 @@ System.out.println("editar productos 341");
             while (rs.next()) {
                 System.out.println("respuesta select "+rs.getString("nombre"));
                 lista.add(rs.getString("nombre"));
+            }
+        }
+    } catch (SQLException ex) {
+        throw new RuntimeException("Error al obtener productos", ex);
+    } catch (Exception ex) {
+        throw new RuntimeException("Error inesperado", ex);
+    }
+    return lista;
+}
+    
+       public ArrayList<String> getProductosPrecio(String codProd) {
+            ArrayList<String> lista = new ArrayList<>();
+        try (Connection con = new conexion().conectar();
+         CallableStatement statement = con.prepareCall("{ CALL getProductosPrecio(?) }")) {
+        statement.setString(1, codProd);
+        try (ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
+                System.out.println("respuesta select "+rs.getString("nombre"));
+                lista.add(rs.getString("nombre")+" $"+rs.getString("precio1_entero")+" $"+rs.getString("preciosuscripcion_entero")+" $"+rs.getString("sku_sin_decimales"));
             }
         }
     } catch (SQLException ex) {

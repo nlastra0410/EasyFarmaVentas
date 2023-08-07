@@ -32,7 +32,7 @@
               <div class="header-left d-flex align-items-center"  >
                  INGRESE SKU
                   <div class="header-search d-none d-md-flex">
-                  <form method="post" action="clienteServlet" id="f_listar" name="f_listar">
+                  <form method="post" action="${pageContext.request.contextPath}/clienteServlet" id="f_listar" name="f_listar">
                       <input id="codProd" name="codProd" type="text" placeholder="Search..."  />
                     <button><i class="lni lni-search-alt"></i></button>
                     <input type="hidden" name="accion" id="accion" value="buscar"> 

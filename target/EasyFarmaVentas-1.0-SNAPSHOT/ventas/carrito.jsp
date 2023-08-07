@@ -22,7 +22,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
     </head>
     <body>
-        <img src="imagenes/banner2.PNG" width="100%">
+        <img src="imagenes_/banner2.PNG" width="100%">
         <h3>
             <table id="menu" border="1"  align="center">
                 <tr>

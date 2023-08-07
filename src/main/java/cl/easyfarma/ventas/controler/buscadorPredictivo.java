@@ -32,13 +32,7 @@ public class buscadorPredictivo extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       /* response.setContentType("text/html;charset=UTF-8");
-        String find = request.getParameter("codProd");
-        ArrayList<String> productos = new productoDAO().getProductos(find);
-        String json = new Gson().toJson(productos);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);*/
+        
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         String find = request.getParameter("codProd");

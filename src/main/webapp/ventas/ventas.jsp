@@ -18,11 +18,13 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/materialdesignicons.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fullcalendar.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+        <script src="${pageContext.request.contextPath}/assets/login.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $("img[name=btn_accion]").click(function () {
-                    var url = 'ventas_2.jsp';
+                    var url = 'indexUser.jsp';
                     $('#inlineFrameExample').attr('src', url);
                 });
             });
@@ -339,7 +341,7 @@
                                             <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
                                         </li>
                                         <li>
-                                            <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                                            <button class="lni lni-exit" id="cerrarSesion" onclick="cerrarSesionCarp();">Sign Out</button>   
                                         </li>
                                     </ul>
                                 </div>
@@ -413,9 +415,11 @@
                     <!-- ========== title-wrapper end ========== -->
 
             </section>
+                                    <input type="hidden" id="correoUsuarioVenta" name="correoUsuarioVenta" value="${sessionScope.usuario.getEmail()}" />
+                                    <input type="hidden" id="usuarioVenta" name="usuarioVenta" value="${sessionScope.usuario.getNombreUsuario()}" />
             <iframe 
                 width="100%" 
-                height="380px" 
+                height="700px" 
                 frameborder="0" 
                 scrolling="yes" 
                 id="inlineFrameExample">

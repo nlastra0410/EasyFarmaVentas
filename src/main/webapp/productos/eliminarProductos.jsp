@@ -52,7 +52,7 @@
               <div class="header-left d-flex align-items-center"  >
                  INGRESE SKU
                   <div class="header-search d-none d-md-flex">
-                  <form method="post" action="../productoServlet" id="f_listar" name="f_listar">
+                  <form method="post" action="${pageContext.request.contextPath}/productoServlet" id="f_listar" name="f_listar">
                       <input id="codProd" name="codProd" type="text" placeholder="Search..."  />
                     <button><i class="lni lni-search-alt"></i></button>
                     <input type="hidden" name="accion" id="accion" value="eliminar"> 
@@ -121,5 +121,6 @@
     <script src="${pageContext.request.contextPath}/assets/js/world-merc.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/polyfill.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/validadores/validadores.js"></script>
   </body>
 </html>

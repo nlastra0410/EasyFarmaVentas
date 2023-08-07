@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="${pageContext.request.contextPath}/assets/login.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -290,7 +292,7 @@
                       <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
                     </li>
                     <li>
-                      <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                      <a href="#0" id="cerrarSesion"> <i class="lni lni-exit"></i> Sign Out </a>
                     </li>
                   </ul>
                 </div>

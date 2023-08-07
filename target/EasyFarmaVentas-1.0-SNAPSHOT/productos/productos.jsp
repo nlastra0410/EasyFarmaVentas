@@ -110,19 +110,19 @@
                     <div class="col-12">
                       <div class="input-style-1">
                         <label>Cantidad</label>
-                        <input id="Cantidad" name="Cantidad" type="text" placeholder="Cantidad" />
+                        <input id="Cantidad" name="Cantidad" type="text" placeholder="Cantidad" oninput="validarNumeros(this)" />
                       </div>
                     </div>
                     <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Minimo</label>
-                        <input id="Minimo" name="Minimo" type="text" placeholder="Mínimo" />
+                        <input id="Minimo" name="Minimo" type="text" placeholder="Mínimo" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                     <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Maximo</label>
-                        <input id="Maximo" name="Maximo" type="text" placeholder="Máximo" />
+                        <input id="Maximo" name="Maximo" type="text" placeholder="Máximo" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                     <div class="col-xxl-4">
@@ -150,67 +150,67 @@
                     <div class="col-12">
                       <div class="input-style-1">
                         <label>Precio de compra</label>
-                        <input id="precioCompra" name="precioCompra" type="text" placeholder="Precio" />
+                        <input id="precioCompra" name="precioCompra" type="text" placeholder="Precio" oninput="validarNumeros(this)" />
                       </div>
                     </div>
                     <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Iva</label>
-                        <input id="iva" name="iva" type="text" placeholder="Iva" />
+                        <input id="iva" name="iva" type="text" placeholder="Iva" oninput="validarNumeros(this)" />
                       </div>
                     </div>
                     <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Impuesto 2</label>
-                        <input id="impuesto2" name="impuesto2" type="text" placeholder="Impuesto" />
+                        <input id="impuesto2" name="impuesto2" type="text" placeholder="Impuesto" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                     <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Impuesto 3</label>
-                        <input id="impuesto3" name="impuesto3" type="text" placeholder="Impuesto" />
+                        <input id="impuesto3" name="impuesto3" type="text" placeholder="Impuesto" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                        <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Margen</label>
-                        <input id="margen" name="margen" type="text" placeholder="Margen" />
+                        <input id="margen" name="margen" type="text" placeholder="Margen" oninput="validarNumeros(this)" />
                       </div>
                     </div>
                        <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Descuento</label>
-                        <input id="descuento" name="descuento" type="text" placeholder="Descuento" />
+                        <input id="descuento" name="descuento" type="text" placeholder="Descuento" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                       <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Precio Sugerido</label>
-                        <input id="precioSugerido" name="precioSugerido" type="text" placeholder="Precio" />
+                        <input id="precioSugerido" name="precioSugerido" type="text" placeholder="Precio" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                        <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Precio 1</label>
-                        <input id="precio1" name="precio1" type="text" placeholder="Precio" />
+                        <input id="precio1" name="precio1" type="text" placeholder="Precio" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                        <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Precio 2</label>
-                        <input id="precio2" name="precio2" type="text" placeholder="Precio" />
+                        <input id="precio2" name="precio2" type="text" placeholder="Precio" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                        <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Precio Suscripcion</label>
-                        <input id="precioSuscripcion" name="precioSuscripcion" type="text" placeholder="Suscripcion" />
+                        <input id="precioSuscripcion" name="precioSuscripcion" type="text" placeholder="Suscripcion" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                        <div class="col-xxl-4">
                       <div class="input-style-1">
                         <label>Precio Convenio</label>
-                        <input id="precioConvenio" name="precioConvenio" type="text" placeholder="Convenio" />
+                        <input id="precioConvenio" name="precioConvenio" type="text" placeholder="Convenio" oninput="validarNumeros(this)"/>
                       </div>
                     </div>
                     <div class="col-xxl-6 col-lg-12 col-md-6">
@@ -238,7 +238,7 @@
                             id="ventaOnline"
                             name="ventaOnline"
                           />
-                          <input type="checkbox" name="miCheckbox" value="valorCheckbox"> Opción
+                          
                           <label
                             class="form-check-label"
                             for="checkbox-remember"
@@ -303,8 +303,9 @@
                         <textarea id="Descripcion" name="Descripcion" placeholder="Escribir aquí" rows="6"></textarea>
                       </div>
                     </div>
+                      <div id="mensaje"></div>
                     <div class="col-12">
-                      <button class="main-btn primary-btn btn-hover">
+                      <button id="botonGuardar" disabled class="main-btn primary-btn btn-hover">
                         GUARDAR
                       </button>
                     </div>
@@ -369,5 +370,6 @@
     <script src="${pageContext.request.contextPath}/assets/js/world-merc.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/polyfill.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/validadores/validadores.js"></script>
   </body>
 </html>

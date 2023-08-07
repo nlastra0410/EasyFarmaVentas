@@ -43,7 +43,9 @@
 								    <div class="invalid-feedback">
 								    	Password es requerido
 							    	</div>
-                                                                <c:out value="${usuario.getMsjusuario()}"/>
+                                                                 <c:if test="${not empty msje}">
+                                                                    <p>Ocurrio un error: ${msje}</p>
+                                                                </c:if>
 								</div>
 
 								<div class="d-flex align-items-center">

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.logging.Level;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -48,17 +49,45 @@ public class empleadoServlet extends HttpServlet {
                     String telefono = request.getParameter("tel");
                     String profesion = request.getParameter("profesion");
                     String direccion = request.getParameter("direccion");
+                    String sexo = request.getParameter("Sexo");
+                    String fechaNacimiento = request.getParameter("fechaNacimiento");
+                    
                     String mensaje = "";
                     if (rut == null || nombre == null || apellido == null || correo == null || telefono == null || profesion == null || direccion == null ) {
                         request.setAttribute("msje", "Fallo el flujo por datos nulos: ");
                         response.sendRedirect("clientes.jsp");
                     return;
                     }
-                    empleadoDAO cliDao = new empleadoDAO();
-                    mensaje = cliDao.Agregar_Empleado(rut, nombre, apellido, correo, telefono, profesion, direccion);
-                    request.setAttribute("msje", "se realizo: " + mensaje);
-                    request.getRequestDispatcher("clientes.jsp").forward(request, response);
                     
+                    String rutCompleto = rut;
+                    // Dividir el RUT en cuerpo y dígito verificador
+                    String[] partes = rutCompleto.split("-");
+                    int cuerpoRut = Integer.parseInt(partes[0]);
+                    String digitoVerificador = partes[1];
+                    System.out.println("Cuerpo del RUT: " + cuerpoRut);
+                    System.out.println("Dígito verificador: " + digitoVerificador);
+                    empleadoDAO cliDao = new empleadoDAO();
+                    /*
+                    String nombre, ok
+                    String apellido, ok
+                    String sexo, no
+                    String telefono, ok 
+                    String fechaNacimiento, no 
+                    String tipoDocumento, no
+                    String numeroDocumento, no
+                    int idUsuario, 
+                    String empleadoActivo, 
+                    int rut, 
+                    String email, 
+                    String dv, 
+                    String profesion*/
+                    mensaje = cliDao.AgregarEmpleado(nombre, apellido, sexo, telefono, fechaNacimiento, "0", "0", "Si", cuerpoRut, correo, digitoVerificador, profesion); 
+                    request.setAttribute("msje", "se realizo: " + mensaje);
+                    //request.getRequestDispatcher("clientes.jsp").forward(request, response);
+                    String jspPath = "/empleados/empleados.jsp";
+                    //response.sendRedirect(request.getContextPath() + jspPath);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher(jspPath);
+                    dispatcher.forward(request, response);
                     break;
                 case "actualizar":
                     empleadoDAO cliE = new empleadoDAO();
@@ -98,20 +127,42 @@ public class empleadoServlet extends HttpServlet {
                     request.getRequestDispatcher("editarclientes.jsp").forward(request, response);
                     break;
                 case "buscar":
-                    empleadoDAO cliDAO = new empleadoDAO();
-                    String codiProd = request.getParameter("codProd");
-                    List<empleadoVO> listClient = cliDAO.listaEmpleados(codiProd);
-                    System.out.println("Listar Clientes 107");
-                    request.setAttribute("listaCli", listClient);
-                    if(accionEliminar.equals("eliminarPersona")){
-                     request.getRequestDispatcher("eliminarCliente.jsp").forward(request, response);   
-                    }else if(accionModificar.equals("modificarPersona")){
+                    if (accionEliminar.equals("eliminarPersona")) {
+                        jspPath = "/empleados/eliminarEmpleados.jsp";
+                        dispatcher = request.getRequestDispatcher(jspPath);
+                        dispatcher.forward(request, response);
+                    } else if (accionModificar.equals("modificarPersona")) {
                         System.out.println("Listar Clientes 112");
-                     request.getRequestDispatcher("modificarClientes.jsp").forward(request, response); 
-                    }else{    
-                     request.getRequestDispatcher("listaClientes.jsp").forward(request, response);   
+                        jspPath = "/empleados/listaEmpleados.jsp";
+                        dispatcher = request.getRequestDispatcher(jspPath);
+                        dispatcher.forward(request, response);
+                        // No es necesario despachar la solicitud nuevamente a "modificarClientes.jsp"
+                        // request.getRequestDispatcher("modificarClientes.jsp").forward(request, response); 
+                    } else {
+                        empleadoDAO cliDAO = new empleadoDAO();
+                        String codiProd = request.getParameter("codProd");
+                        System.out.println("Listar Clientes 132 "+codiProd);
+                        List<empleadoVO> listClient = cliDAO.listaEmpleados(codiProd);
+                        for(empleadoVO p : listClient){
+                            System.out.println("a1 " + p.getRUT());
+                            System.out.println("a2 " + p.getDV());
+                            System.out.println("a3 " + p.getNOMBRE());
+                            System.out.println("a4 " + p.getAPELLIDOS());
+                            System.out.println("a6 " + p.getEMAIL());
+                            System.out.println("a7 " + p.getTELEFONO());
+                            System.out.println("a8 " + p.getPROFESION());
+                            System.out.println("a9 " + p.getEMPLEADOACTIVO());
+                        }
+                       
+                        System.out.println("Listar Clientes 133");
+                        request.setAttribute("listaCli", listClient);
+                        System.out.println("Listar Clientes 149");
+                        jspPath = "/empleados/listaEmpleados.jsp";
+                        dispatcher = request.getRequestDispatcher(jspPath);
+                        dispatcher.forward(request, response);
                     }
                     break;
+
                 case "editar":
                     
                     break;    

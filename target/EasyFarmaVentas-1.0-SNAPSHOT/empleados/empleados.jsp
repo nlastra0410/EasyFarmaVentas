@@ -41,13 +41,13 @@
                 <div class="title mb-30">
                   <h6>Agregar Empleado</h6>
                 </div>
-                  <form action="empleadoServlet" method="post">
+                  <form action="${pageContext.request.contextPath}/empleadoServlet" method="post">
                       <input type="hidden" name="accion" id="accion" value="agregar">
                   <div class="row">
                     <div class="col-12">
                       <div class="input-style-1">
                         <label>Rut</label>
-                        <input type="text" placeholder="Rut Cliente" id="rut" name="rut" />
+                        <input type="text" placeholder="Rut Cliente" id="rut" name="rut" placeholder="Escribe tu RUT" onblur="formatoRut(this)" />
                       </div>
                     </div>
                     <div class="col-12">
@@ -76,86 +76,23 @@
                     </div>
                     <div class="col-xxl-4">
                       <div class="input-style-1">
+                        <label>Sexo</label>
+                        <input type="text" placeholder="Sexo" id="Sexo" name="Sexo"/>
+                      </div>
+                    </div>
+                       <div class="col-xxl-4">
+                      <div class="input-style-1">
+                        <label>fechaNacimiento</label>
+                        <input type="text" placeholder="fecha de Nacimiento 01/01/88" id="fechaNacimiento" name="fechaNacimiento" onblur="formatearFechaInput()"/>
+                      </div>
+                    </div>
+                    <div class="col-xxl-4">
+                      <div class="input-style-1">
                         <label>Profesion</label>
                         <input type="text" placeholder="Profesion" id="profesion" name="profesion"/>
                       </div>
                     </div>
-                    <div class="title mb-30">
-                        <h6>Fecha Nacimiento</h6>
-                    </div>
-                      <div class="col-xxl-4">
-                      <div class="select-style-1">
-                        <label>Día</label>
-                        <div class="select-position">
-                          <select class="light-bg">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                            <option value="">4</option>
-                            <option value="">5</option>
-                            <option value="">6</option>
-                            <option value="">7</option>
-                            <option value="">8</option>
-                            <option value="">9</option>
-                            <option value="">10</option>
-                            <option value="">11</option>
-                            <option value="">12</option>
-                            <option value="">13</option>
-                            <option value="">14</option>
-                            <option value="">15</option>
-                            <option value="">16</option>
-                            <option value="">17</option>
-                            <option value="">18</option>
-                            <option value="">19</option>
-                            <option value="">20</option>
-                            <option value="">21</option>
-                            <option value="">22</option>
-                            <option value="">23</option>
-                            <option value="">24</option>
-                            <option value="">25</option>
-                            <option value="">26</option>
-                            <option value="">27</option>
-                            <option value="">28</option>
-                            <option value="">29</option>
-                            <option value="">30</option>
-                            <option value="">31</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                     <div class="col-xxl-4">
-                      <div class="select-style-1">
-                        <label>Mes</label>
-                        <div class="select-position">
-                          <select class="light-bg">
-                            <option value="">Enero</option>
-                            <option value="">Febrero</option>
-                            <option value="">Marzo</option>
-                            <option value="">Abril</option>
-                            <option value="">Mayo</option>
-                            <option value="">Junio</option>
-                            <option value="">Julio</option>
-                            <option value="">Agosto</option>
-                            <option value="">Septiembre</option>
-                            <option value="">Octubre</option>
-                            <option value="">Noviembre</option>
-                            <option value="">Diciembre</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xxl-4">
-                      <div class="select-style-1">
-                        <label>Año</label>
-                        <div class="select-position">
-                          <select>
-                            <c:forEach begin="1930" end="2005" var="year">
-                              <option value="${year}">${year}</option>
-                            </c:forEach>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
+                     
                     <div class="col-12">
                       <div class="input-style-1">
                         <label>Direccion</label>
@@ -228,5 +165,6 @@
     <script src="${pageContext.request.contextPath}/assets/js/world-merc.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/polyfill.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/validadores/validadores.js" type="text/javascript"></script>
   </body>
 </html>

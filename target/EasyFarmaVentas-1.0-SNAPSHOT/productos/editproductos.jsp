@@ -41,7 +41,7 @@
                 <div class="title mb-30">
                   <h6>Agregar Productos</h6>
                 </div>
-                  <form action="productoServlet" method="POST" >
+                  <form action="${pageContext.request.contextPath}/productoServlet" method="POST" >
                   <div class="row">
                     <div class="col-12">
                       <div class="input-style-1">
@@ -58,7 +58,7 @@
                     <div class="col-12">
                       <div class="input-style-1">
                         <label>Principio Activo</label>
-                        <input id="PrincipioActivo" name="PrincipioActivo" type="text" placeholder="Principio Activo"  value="<c:out value="${productoEdit.getActivo()}"/>" />
+                        <input id="PrincipioActivo" name="PrincipioActivo" type="text" placeholder="Principio Activo"  value="<c:out value="${productoEdit.getPrincipioactivo()}"/>" />
                       </div>
                     </div>
                     <div class="title mb-30">
@@ -86,13 +86,14 @@
                       <div class="select-style-1">
                         <label>Departamento</label>
                         <div class="select-position">
-                            <select class="light-bg" id="Departamento" name="Departamento">
-                            <option value="">Select category</option>
-                            <option value="Perfumeria">Perfumeria</option>
-                            <option value="Dermatologia">Dermatologia</option>
-                            <option value="Cosmetica">Cosmetica</option>
-                            <option value="Medicamentos">Medicamentos</option>
-                            <option value="Liquidos">Liquidos</option>
+                              <select class="light-bg" id="Departamento" name="Departamento">
+                                <option value="">Select category</option>
+                                <option value="Perfumeria" <c:if test="${productoEdit.getDepartamento() == 'Perfumeria'}">selected</c:if>>Perfumeria</option>
+                                <option value="Dermatologia" <c:if test="${productoEdit.getDepartamento() == 'Dermatologia'}">selected</c:if>>Dermatologia</option>
+                                <option value="Cosmetica" <c:if test="${productoEdit.getDepartamento() == 'Cosmetica'}">selected</c:if>>Cosmetica</option>
+                                <option value="Medicamentos" <c:if test="${productoEdit.getDepartamento() == 'Medicamentos'}">selected</c:if>>Medicamentos</option>
+                                <option value="Liquidos" <c:if test="${productoEdit.getDepartamento() == 'Liquidos'}">selected</c:if>>Liquidos</option>
+                              </select>
                           </select>
                         </div>
                       </div>
@@ -129,18 +130,18 @@
                         <label>Sucursal</label>
                         <div class="select-position">
                             <select class="light-bg" id="Sucursal" name="Sucursal">
-                            <option value="">Select category</option>
-                            <option value="OVALLE">OVALLE</option>
-                            <option value="PROVIDENCIA">PROVIDENCIA</option>
-                            <option value="WEB">PAGINA WEB</option>
-                          </select>
+                                <option value="">Select category</option>
+                                <option value="OVALLE" <c:if test="${productoEdit.getSucursal() == 'OVALLE'}">selected</c:if>>OVALLE</option>
+                                <option value="PROVIDENCIA" <c:if test="${productoEdit.getSucursal() == 'PROVIDENCIA'}">selected</c:if>>PROVIDENCIA</option>
+                                <option value="WEB" <c:if test="${productoEdit.getSucursal() == 'WEB'}">selected</c:if>>PAGINA WEB</option>
+                              </select>
                         </div>
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="input-style-1">
                         <label>Descripción</label>
-                        <textarea id="EscribiraquiDesc" name="EscribiraquiDesc" placeholder="Escribir aquí" rows="6"><c:out value="${productoEdit.getEscribirAquiDesc()}"/></textarea>
+                        <textarea id="EscribirAquiDesc" name="EscribirAquiDesc" placeholder="Escribir aquí" rows="6"><c:out value="${productoEdit.getEscribirAquiDesc()}"/></textarea>
                       </div>
                     </div>
                      <div class="title mb-30">
@@ -210,17 +211,20 @@
                       <div class="input-style-1">
                         <label>Precio Convenio</label>
                         <input id="precioConvenio" name="precioConvenio" type="text" placeholder="Convenio" value="<c:out value="${productoEdit.getPrecioConvenio()}"/>" />
+                      
                       </div>
                     </div>
                     <div class="col-xxl-6 col-lg-12 col-md-6">
                         <div class="form-check checkbox-style mb-30">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value="Venta Presencial"
-                            id="ventaPresencial"
-                            name="ventaPresencial"
+                          <input class="form-check-input" 
+                                 type="checkbox" 
+                                 value="false" 
+                                 id="ventaPresencial" 
+                                 name="ventaPresencial" 
+                                 onclick="setCheckboxValue('ventaPresencial')"
+                                 <c:out value="${productoEdit.isVentaPresencial() ? 'checked' : ''}"/>
                           />
+                           
                           <label
                             class="form-check-label"
                             for="checkbox-remember"
@@ -233,11 +237,13 @@
                           <input
                             class="form-check-input"
                             type="checkbox"
-                            value="Venta Online"
+                            value="false"
                             id="ventaOnline"
                             name="ventaOnline"
+                            <c:out value="${productoEdit.isVentaOnline() ? 'checked' : ''}"/>
+                            onclick="setCheckboxValue('ventaOnline')"
                           />
-                          <input type="checkbox" name="miCheckbox" value="valorCheckbox"> Opción
+                          
                           <label
                             class="form-check-label"
                             for="checkbox-remember"
@@ -251,9 +257,11 @@
                           <input
                             class="form-check-input"
                             type="checkbox"
-                            value="Receta"
+                            value="false"
                             id="receta"
                             name="receta"
+                            onclick="setCheckboxValue('receta')"
+                            <c:out value="${productoEdit.isRequiereReceta() ? 'checked' : ''}"/>
                           />
                           <label
                             class="form-check-label"
@@ -267,9 +275,11 @@
                           <input
                             class="form-check-input"
                             type="checkbox"
-                            value="Receta Retenida"
+                            value="false"
                             id="recetaRetenida"
                             name="recetaRetenida"
+                            onclick="setCheckboxValue('recetaRetenida')"
+                            <c:out value="${productoEdit.isRecetaRetenida() ? 'checked' : ''}"/>
                           />
                           <label
                             class="form-check-label"
@@ -283,15 +293,18 @@
                           <input
                             class="form-check-input"
                             type="checkbox"
-                            value="Solo Retiro en Tienda"
+                            value="false"
                             id="retiroTienda"
                             name="retiroTienda"
+                            onclick="setCheckboxValue('retiroTienda')"
+                             <c:out value="${productoEdit.isRetiroTienda() ? 'checked' : ''}"/>
                           />
                           <label
                             class="form-check-label"
                             for="checkbox-remember"
                           >
                             Solo Retiro en Tienda</label
+                          
                           >
                           
                         </div>
@@ -361,14 +374,15 @@
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/Chart.min.js"></script>
-    <script src="assets/js/dynamic-pie-chart.js"></script>
-    <script src="assets/js/moment.min.js"></script>
-    <script src="assets/js/fullcalendar.js"></script>
-    <script src="assets/js/jvectormap.min.js"></script>
-    <script src="assets/js/world-merc.js"></script>
-    <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/dynamic-pie-chart.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/fullcalendar.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jvectormap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/world-merc.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/polyfill.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/validadores/validadores.js"></script>
   </body>
 </html>

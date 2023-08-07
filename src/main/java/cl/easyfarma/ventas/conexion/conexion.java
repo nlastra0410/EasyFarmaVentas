@@ -24,9 +24,9 @@ public class conexion {
             //String url = "jdbc:mysql://localhost:3306/easyfarmaventas";
             //sitio web hosting easyvent_easyfarmaventas
             String url = "jdbc:mysql://localhost:3306/easyvent_easyfarmaventas";
-            //String url2 = "jdbc:mysql://localhost:3306/easyvent_easyfarmaventas?noAccessToProcedureBodies=true";
-           // String usuario = "easyvent_easyvent";
-           // String contraseña = "fRS4d.;Sm85h6Z";
+            //String url = "jdbc:mysql://localhost:3306/easyvent_easyfarmaventas?noAccessToProcedureBodies=true";
+            //String usuario = "easyvent_easyvent";
+            //String contraseña = "fRS4d.;Sm85h6Z";
             String usuario = "root";
             String contraseña = "";
             connection = DriverManager.getConnection(url, usuario, contraseña);

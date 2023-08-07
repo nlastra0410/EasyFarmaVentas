@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="${pageContext.request.contextPath}/assets/login.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -148,7 +150,7 @@
                         </div>
                         <div class="content">
                           <h6>
-                            <c:out value="${usuario.getNombreUsuario()}"/>
+                            <c:out value="${usuario.getNombreUsuario()}"/> 
                             <span class="text-regular">
                               comment on a product.
                             </span>
@@ -290,7 +292,7 @@
                       <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
                     </li>
                     <li>
-                      <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                        <button class="lni lni-exit" id="cerrarSesion" onclick="cerrarSesion();">Sign Out</button>   
                     </li>
                   </ul>
                 </div>

@@ -118,5 +118,6 @@
     <script src="${pageContext.request.contextPath}/assets/js/world-merc.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/polyfill.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/validadores/validadores.js"></script>
   </body>
 </html>

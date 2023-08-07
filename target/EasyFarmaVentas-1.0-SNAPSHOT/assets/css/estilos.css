@@ -1,0 +1,90 @@
+*{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 14px;
+}
+
+table {
+	border: 1px solid #ccc;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table tr {
+	border: 1px solid #ddd;
+	padding: 5px;
+}
+
+table tr:nth-child(even) {
+	background-color: #f3f3f3;
+	color: black;
+}
+
+table td, table th {
+	padding: 10px;
+	text-align: center;
+}
+
+table th {
+	text-transform: capitalize;
+	font-family: 12px;
+	letter-spacing: 1px;
+}
+
+/*//////////////////////////////////////////////*/
+
+@media screen and (max-width: 480px) {
+	table {
+		border:0;
+	}
+
+	table tr {
+		margin-bottom: 10px;
+		display: block;
+		border-bottom: 2px solid #ddd;
+
+	}
+
+	table td {
+		display: block;
+		text-align: right;
+		font-size: 12px;
+		border-bottom: 1px dotted #ccc;
+	}
+
+	table td:last-child {
+		border-bottom: 0;
+	}
+
+	table td:before {
+		content: attr(data-label);
+		float: left;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	table thead {
+		display: none;
+	}
+}
+
+/* Estilo del popup */
+#popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+/* Estilo del botón dentro del popup */
+#popup button {
+  margin-right: 10px;
+}

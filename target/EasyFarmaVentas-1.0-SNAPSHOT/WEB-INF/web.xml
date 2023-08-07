@@ -38,15 +38,43 @@
     </servlet>
     <servlet>
         <servlet-name>ServletAgregarCarrito</servlet-name>
-        <servlet-class>cl.easyfarma.ventas.controler.ServletAgregarCarrito</servlet-class>
+        <servlet-class>cl.easyfarma.venta.controladorVenta.ServletAgregarCarrito</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServletControlador</servlet-name>
-        <servlet-class>cl.easyfarma.ventas.controler.ServletControlador</servlet-class>
+        <servlet-class>cl.easyfarma.venta.controladorVenta.ServletControlador</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServletModificarProducto</servlet-name>
-        <servlet-class>cl.easyfarma.ventas.controler.ServletModificarProducto</servlet-class>
+        <servlet-class>cl.easyfarma.venta.controladorVenta.ServletModificarProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>buscadorFarmacia</servlet-name>
+        <servlet-class>cl.easyfarma.ventas.controler.buscadorFarmacia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductoGSON</servlet-name>
+        <servlet-class>cl.easyfarma.venta.controladorVenta.ProductoGSON</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>buscarClientePlus</servlet-name>
+        <servlet-class>cl.easyfarma.ventas.controler.buscarClientePlus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ventas</servlet-name>
+        <servlet-class>cl.easyfarma.venta.controladorVenta.ventas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CerrarSesionServlet</servlet-name>
+        <servlet-class>cl.easyfarma.ventas.controler.CerrarSesionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SaveDataServlet</servlet-name>
+        <servlet-class>cl.easyfarma.venta.controladorVenta.SaveDataServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ciudadServlet</servlet-name>
+        <servlet-class>cl.easyfarma.ventas.controler.ciudadServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>usuarioServlets</servlet-name>
@@ -95,6 +123,34 @@
     <servlet-mapping>
         <servlet-name>ServletModificarProducto</servlet-name>
         <url-pattern>/ServletModificarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscadorFarmacia</servlet-name>
+        <url-pattern>/buscadorFarmacia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductoGSON</servlet-name>
+        <url-pattern>/ProductoGSON</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscarClientePlus</servlet-name>
+        <url-pattern>/buscarClientePlus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ventas</servlet-name>
+        <url-pattern>/ventas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesionServlet</servlet-name>
+        <url-pattern>/CerrarSesionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveDataServlet</servlet-name>
+        <url-pattern>/SaveDataServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ciudadServlet</servlet-name>
+        <url-pattern>/ciudadServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

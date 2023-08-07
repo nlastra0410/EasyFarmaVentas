@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/materialdesignicons.min.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fullcalendar.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+        <script src="${pageContext.request.contextPath}/assets/login.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src='https://code.jquery.com/jquery-1.12.4.min.js'></script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -339,7 +341,7 @@
                                             <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
                                         </li>
                                         <li>
-                                            <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                                            <button class="lni lni-exit" id="cerrarSesion" onclick="cerrarSesionCarp();">Sign Out</button>  
                                         </li>
                                     </ul>
                                 </div>
@@ -471,6 +473,7 @@
     <script src="${pageContext.request.contextPath}/assets/js/world-merc.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/polyfill.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/validadores/validadores.js"></script>
 
 </body>
 </html>

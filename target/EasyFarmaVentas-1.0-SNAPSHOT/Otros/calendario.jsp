@@ -11,13 +11,14 @@
       type="image/x-icon"
     />
     <title>Tables | PlainAdmin Demo</title>
-
+    <script src="${pageContext.request.contextPath}/assets/login.js" type="text/javascript"></script>
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lineicons.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -287,7 +288,7 @@
                       <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
                     </li>
                     <li>
-                      <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                       <button class="lni lni-exit" id="cerrarSesion" onclick="cerrarSesionCarp();">Sign Out</button>  
                     </li>
                   </ul>
                 </div>

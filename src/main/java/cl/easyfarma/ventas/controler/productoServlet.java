@@ -4,10 +4,13 @@
  */
 package cl.easyfarma.ventas.controler;
 
+import static cl.easyfarma.venta.modelo.ProductoDB.obtenerProductos;
+import cl.easyfarma.venta.modelo.Productos;
 import cl.easyfarma.ventas.dao.productoDAO;
 import cl.easyfarma.ventas.vo.productoVO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import javax.servlet.RequestDispatcher;
@@ -50,7 +53,7 @@ public class productoServlet extends HttpServlet {
                     String Usos = request.getParameter("Usos");
                     String Contraindicaciones = request.getParameter("Contraindicaciones");
                     String Departamento = request.getParameter("Departamento");
-                    String EscribirAqui = request.getParameter("EscribiraquiDesc");
+                    String EscribirAqui = request.getParameter("Escribiraqui");
                     String CantidadStr = request.getParameter("Cantidad");
                     String MinimoStr = request.getParameter("Minimo");
                     String MaximoStr = request.getParameter("Maximo");
@@ -74,6 +77,22 @@ public class productoServlet extends HttpServlet {
                     String retiroTiendaStr = request.getParameter("retiroTienda");
                     String descripcion = request.getParameter("Descripcion");
                     
+                    if(ventaPresencialStr == null){
+                        ventaPresencialStr = "0";
+                    }
+                    if(ventaOnlineStr == null){
+                        ventaOnlineStr = "0";
+                    }
+                    if(recetaStr == null){
+                       recetaStr = "0"; 
+                    }
+                    if(recetaRetenidaStr == null){
+                        recetaRetenidaStr = "0";
+                    }
+                    if(retiroTiendaStr == null){
+                        retiroTiendaStr = "0";
+                    }
+                    
                     System.out.println("accion " + request.getParameter("CodSKU"));
                     System.out.println("NOMBREPROD " + request.getParameter("nombreProd"));
                     System.out.println("PRINCIPIOACTIVO " + request.getParameter("PrincipioActivo"));
@@ -81,7 +100,7 @@ public class productoServlet extends HttpServlet {
                     System.out.println("USOS " + request.getParameter("Usos"));
                     System.out.println("Contraindicaciones " + request.getParameter("Contraindicaciones"));
                     System.out.println("Departamento " + request.getParameter("Departamento"));
-                    System.out.println("EscribiraquiDesc " + request.getParameter("EscribiraquiDesc"));
+                    System.out.println("EscribiraquiDesc " + request.getParameter("Escribiraqui"));
                     System.out.println("Cantidad " + request.getParameter("Cantidad"));
                     System.out.println("Minimo " + request.getParameter("Minimo"));
                     System.out.println("Maximo " + request.getParameter("Maximo"));
@@ -123,7 +142,7 @@ public class productoServlet extends HttpServlet {
                     Double precio2 = 0.0;
                     Double precioSuscripcion = 0.0;
                     Double precioConvenio = 0.0;
-
+                    
                     if (CantidadStr == null || MinimoStr == null || MaximoStr == null || precioCompraStr == null || ivaStr == null ||
                         impuesto2Str == null || impuesto3Str == null || margenStr == null || descuentoStr == null ||
                         precioSugeridoStr == null || precio1Str == null || precio2Str == null || precioSuscripcionStr == null ||
@@ -171,7 +190,7 @@ public class productoServlet extends HttpServlet {
                         //response.sendRedirect(request.getContextPath() + jspPath);
                         RequestDispatcher dispatcher = request.getRequestDispatcher(jspPath);
                         dispatcher.forward(request, response);
-                    }if(accionEdit.equals("editar")){
+                    }else if(accionEdit.equals("editar")){
                         System.out.println("editar productos 118");
                         mensaje = producto.Editar_Producto(CodSKU, nombreProd, PrincipioActivo, Contenido, Usos, Contraindicaciones, Departamento, EscribirAqui, Cantidad, Minimo, Maximo, Sucursal, EscribirAquiDesc, precioCompra, iva, impuesto2, impuesto3, margen, descuento, precioSugerido, precio1, precio2, precioSuscripcion, precioConvenio, ventaPresencial, ventaOnline, receta, recetaRetenida, retiroTienda, descripcion);
                         request.setAttribute("msje", "se realizo: " + mensaje);
@@ -187,10 +206,6 @@ public class productoServlet extends HttpServlet {
                         dispatcher.forward(request, response);
                     }
                     }
-                    
-
-                    
-                    
                     break;
                 case "actualizar":
                     String jspPath = "/productos/listaProductos.jsp";
@@ -244,11 +259,32 @@ public class productoServlet extends HttpServlet {
                     productoVO editarProductos = editarProd.listarProductosEdit(SKU);
                     System.out.println("2 editar productos ");
                     request.setAttribute("productoEdit", editarProductos);
+                    System.out.println("getVentaOnline "+editarProductos.isVentaOnline());
+                    System.out.println("getRequiereReceta "+editarProductos.isRequiereReceta());
+                    System.out.println("getRecetaRetenida "+editarProductos.isRecetaRetenida());
+                    System.out.println("getRetiroTienda "+editarProductos.isRetiroTienda());
+                    System.out.println("getVentaPresencial "+editarProductos.isVentaPresencial());
+                    
                     jspPath = "/productos/editproductos.jsp";
                     RequestDispatcher dispatcherE = request.getRequestDispatcher(jspPath);
                     dispatcherE.forward(request, response);
                     break;    
-                   
+                case "ventas":
+                    ArrayList<Productos> obtList = obtenerProductos();
+                    for (Productos pr:obtList){
+                         System.out.println("nombre "+pr.getNombre());
+                         System.out.println("codigoProducto "+pr.getCodigoProducto());
+                         System.out.println("precio "+pr.getPrecio());
+                         System.out.println("Descripcion "+pr.getDescripcion());
+                         System.out.println("Cantidad "+pr.getCantidad());
+                         System.out.println("Stock "+pr.getStock());
+                         System.out.println("PrecioEasyFarmaPlus "+pr.getPrecioEasyFarmaPlus());
+                    }
+                    request.setAttribute("obtList", obtList);     
+                    jspPath = "/ventas/indexUser.jsp";
+                    dispatcherE = request.getRequestDispatcher(jspPath);
+                    dispatcherE.forward(request, response);
+                    break;       
                default:
             }
         } catch (Exception ex) {

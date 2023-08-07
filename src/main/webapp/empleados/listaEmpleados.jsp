@@ -32,7 +32,7 @@
               <div class="header-left d-flex align-items-center"  >
                  INGRESE SKU
                   <div class="header-search d-none d-md-flex">
-                  <form method="post" action="clienteServlet" id="f_listar" name="f_listar">
+                  <form method="post" action="${pageContext.request.contextPath}/empleadoServlet" id="f_listar" name="f_listar">
                       <input id="codProd" name="codProd" type="text" placeholder="Search..."  />
                     <button><i class="lni lni-search-alt"></i></button>
                     <input type="hidden" name="accion" id="accion" value="buscar"> 
@@ -58,7 +58,6 @@
                           <th><h6>Nombre</h6></th>
                           <th><h6>Direccion</h6></th>
                           <th><h6>Email</h6></th>
-                          <th><h6>Plus</h6></th>
                           <th><h6>Profesion</h6></th>
                           <th><h6>Telefono</h6></th>
                         </tr>
@@ -68,13 +67,12 @@
                          <c:forEach var="listaCli" items="${listaCli}">
                              <tr>
                                 <td scope="row"></td>
-                                <td scope="row">${listaCli.getRut()}-${listaCli.getDv()}</td>
-                                <td scope="row">${listaCli.getNombre()} ${listaCli.getApellido()}</td>
-                                <td scope="row">${listaCli.getDireccion()}</td>
-                                <td scope="row">${listaCli.getEmail()}</td>
-                                <td scope="row">${listaCli.getPlus()}</td>
-                                <td scope="row">${listaCli.getProfesion()}</td>
-                                <td scope="row">${listaCli.getTelefono()}</td>
+                                <td scope="row">${listaCli.getRUT()}-${listaCli.getDV()}</td>
+                                <td scope="row">${listaCli.getNOMBRE()} ${listaCli.getAPELLIDOS()}</td>
+                                <td scope="row">${listaCli.getDIRECCION()}</td>
+                                <td scope="row">${listaCli.getEMAIL()}</td>
+                                <td scope="row">${listaCli.getPROFESION()}</td>
+                                <td scope="row">${listaCli.getTELEFONO()}</td>
                                 <%--  <td scope="row">${listaProd.getDescripcion()}</td> --%>
                             </tr>
                           </c:forEach> 

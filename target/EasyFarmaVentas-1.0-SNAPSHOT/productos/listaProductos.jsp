@@ -22,80 +22,6 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  
-<%--<script>
-   $(function() {
-             var availableTags = new Array();
-             $("#codProd").bind("keydown", function(event) {
-               var data = { codProd: $("#codProd").val() };
-               $.getJSON("${pageContext.request.contextPath}/buscadorPredictivo", data, function(res, est, jqXHR) {
-                 availableTags.length = 0;
-                 $.each(res, function(i, item) {
-                   availableTags[i] = item;
-                   console.log("item "+item);
-                   console.log("availableTags "+availableTags);
-                 });
-               });
-             });
-             $("#codProd").autocomplete({
-                source: availableTags,
-                minLength: 1
-             });
-           });
-</script>
-<script>
-  $(function() {
-    var availableTags = [];
-
-    $("#codProd").on("input", function() {
-      var codProd = $(this).val();
-
-      $.getJSON("${pageContext.request.contextPath}/buscadorPredictivo", { codProd: codProd })
-        .done(function(res) {
-          availableTags = res;
-          $("#codProd").autocomplete("option", "source", availableTags);
-        })
-        .fail(function() {
-          availableTags = [];
-          $("#codProd").autocomplete("option", "source", availableTags);
-        });
-    });
-
-    $("#codProd").autocomplete({
-      source: availableTags,
-      minLength: 1
-    });
-  });
-</script>
-<script>
-  $(function() {
-    var availableTags = [];
-
-    $("#codProd").on("input", function() {
-      var codProd = $(this).val();
-
-      $.getJSON("${pageContext.request.contextPath}/buscadorPredictivo", { codProd: codProd })
-        .done(function(res) {
-          availableTags = [];
-          $.each(res, function(i, item) {
-            availableTags.push(item);
-          });
-          $("#codProd").autocomplete("option", "source", availableTags);
-         // $("#codProd").autocomplete("refresh");
-        })
-        .fail(function() {
-          availableTags = [];
-          $("#codProd").autocomplete("option", "source", availableTags);
-         // $("#codProd").autocomplete("refresh");
-        });
-    });
-
-    $("#codProd").autocomplete({
-      source: availableTags,
-      minLength: 1
-    });
-  });
-</script>--%>
 <script>
   $(function() {
     $("#codProd").autocomplete({
@@ -133,10 +59,16 @@
                     <input type="hidden" id="jsonData" name="jsonData" />
                   </form>
                 </div>
+                      
                 
                  
               </div>
-                
+                 <div class="searchbox">
+                     <input type="hidden" id="bc-product-search" placeholder="Search...">
+                    </div>
+    <div class="result-ajax-search-desktop">
+        <ul class="search-results-desktop"></ul>
+    </div>
             </div>
              
               <br>
@@ -194,5 +126,6 @@
     <script src="${pageContext.request.contextPath}/assets/js/world-merc.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/polyfill.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/validadores/validadores.js"></script>
   </body>
 </html>

@@ -151,11 +151,15 @@ public class usuarioServlets extends HttpServlet {
             sesion.setAttribute("usuario", usuario);
             request.setAttribute("usuario", usuario);
             request.setAttribute("msje", "Bienvenido al sistema");
+            HttpSession session = request.getSession();
+            session.setAttribute("usuario2", usuario);
             System.out.println("usuario "+usuario.getNombreCargo());
             this.getServletConfig().getServletContext().getRequestDispatcher("/dashboard.jsp").forward(request, response);
         } else if (usuario != null && usuario.getNombreCargo().equals("VENDEDOR")) {
             sesion = request.getSession();
             sesion.setAttribute("vendedor", usuario);
+            HttpSession session = request.getSession();
+            session.setAttribute("usuario", usuario);
             this.getServletConfig().getServletContext().getRequestDispatcher("/dashboardVendedor.jsp").forward(request, response);
         } else {
              usuarioVO usumsj = new usuarioVO(); // Inicializar la variable usumsj
