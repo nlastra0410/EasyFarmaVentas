@@ -12,7 +12,9 @@ C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\jav
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\venta\modelo\Articulo.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\dao\empleadoDAO.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\controler\buscadorClientePredictivo.java
+C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\controler\ObtenerFolioServlet.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\controler\buscadorEmpleadoPredictivo.java
+C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\vo\ProductoVenta.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\dao\proveedorDAO.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\venta\controladorVenta\SaveDataServlet.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\venta\controladorVenta\ventas.java
@@ -21,6 +23,8 @@ C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\jav
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\vo\productoVO.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\controler\usuarioServlets.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\vo\Productos.java
+C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\venta\controladorVenta\ImpresionTicket.java
+C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\vo\JsonResponse.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\dao\Ventas.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\vo\usuarioVO.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\conexion\comprobar.java
@@ -31,6 +35,7 @@ C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\jav
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\venta\modelo\UsuarioDB.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\conexion\ConexionDB.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\controler\buscadorFarmacia.java
+C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\controler\productoVentaServlet.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\vo\DatosVenta.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\controler\buscadorPredictivo.java
 C:\Users\nlast\OneDrive\Documentos\NetBeansProjects\EasyFarmaVentas\src\main\java\cl\easyfarma\ventas\conexion\conexion.java

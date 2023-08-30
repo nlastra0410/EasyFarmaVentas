@@ -14,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -62,9 +64,9 @@ public class SaveDataServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+                processRequest(request, response);
                 Ventas vent = new Ventas();
-        
+                 
         // Leer el cuerpo de la solicitud para obtener los datos enviados desde la página
                 BufferedReader reader = request.getReader();
                 StringBuilder stringBuilder = new StringBuilder();
@@ -96,6 +98,7 @@ public class SaveDataServlet extends HttpServlet {
                 String region = datosVenta.getRegion();
                 String ciudad = datosVenta.getCiudad();
                 String provincia = datosVenta.getProvincia();
+                //Integer numeroDocumento = Integer.parseInt(numeroDoc);
                 
                 System.out.println("Rut Plus: " + rutPlus);
                 System.out.println("Nombre: " + nombre);
@@ -135,7 +138,9 @@ public class SaveDataServlet extends HttpServlet {
                 // Simular una respuesta con un objeto Java y convertirlo a JSON usando Gson
                 //Gson gson = new Gson();
                 String jsonResponse = gson.toJson("Estamos haciendo una prueba");
-
+                
+                ImpresionTicket impresionTicket = new ImpresionTicket();
+                                impresionTicket.impresionTicket(Integer.parseInt(numeroDoc));
                 // Establecer encabezado de respuesta indicando que es JSON
                 response.setContentType("application/json");
                 request.setAttribute("msje", "se realizo: " + jsonResponse);

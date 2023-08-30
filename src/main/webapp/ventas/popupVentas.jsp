@@ -84,11 +84,13 @@ button {
     
   </style>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    
 </head>
 <body onload="mostrarPopup();mostrarModal();recopilarInfo();disableInputFields();traeCiudades();">
@@ -135,7 +137,9 @@ button {
             <input type="hidden" id="hiddenRegion" value="">
             <input type="hidden" id="hiddenCiudad" value="">
             <input type="hidden" id="hiddenProvincia" value="">
-            
+     
+          
+   
 
     <br>
         <input placeholder="NOMBRE CLIENTE" type="text" id="nombreCliente">
@@ -157,23 +161,20 @@ button {
         <label for="country">PAIS/REGION:</label>
     <br> 
         <input type="hidden" value="" name="sku" id="sku">
-    <br>
+<br><br>
+    Ciudad:
         <select name="ciudad" id="ciudad">
-        <c:forEach items="${ciudades}" var="ciudad">
-            <option value="${ciudad.nombre}">${ciudad.nombre}</option>
-        </c:forEach>
+       
         </select>
-
+<br><br>
+    Provincia:
         <select name="provincia" id="provincia">
-            <c:forEach items="${ciudades}" var="ciudad">
-                <option value="${ciudad.provincia}">${ciudad.provincia}</option>
-            </c:forEach>
+           
         </select>
-
+<br><br>
+    Region:
         <select name="region" id="region">
-            <c:forEach items="${ciudades}" var="ciudad">
-                <option value="${ciudad.region}">${ciudad.region}</option>
-            </c:forEach>
+           
         </select>
     <br>
     <br>
@@ -187,7 +188,7 @@ button {
         <button onclick="cerrarPopup()">Generar Pago</button>
     </div>
        
-          
+    <div id="tablaProductos" style="display: none"></div>   
          
        
   </div>
@@ -228,6 +229,7 @@ button {
         var sku = urlParams.get('sku');
         var TipoDoc = urlParams.get('TipoDoc');
         var correo = urlParams.get('correo');
+        
 
                     
         var message = 
@@ -270,16 +272,13 @@ button {
             var provinciaInput = document.getElementById('provincia');
             var totalInput = document.getElementById('totalTD');
             var skuInput = document.getElementById("sku");
+            var ndoc = document.getElementById("ndoc");
 
             // Set the value of the input if rutPlus is not null
             if (rutPlus !== null) {
                 rutInput.value = rutPlus;
             }
- 
-            if (nombre !== null) {
-                nombreInput.value = nombre;
-            }
-
+  
             if (correo !== null) {
                 correoInput.value = correo;
             }
@@ -322,14 +321,15 @@ button {
             (document.getElementById("hiddenDescuento").value)              =  urlParams.get('descuento');
             document.getElementById("hiddenCorreo").value                   =  urlParams.get('correo');
             document.getElementById("hiddenTipoDoc").value                  =  urlParams.get('TipoDoc');
-            document.getElementById("hiddenNumeroDoc").value                =  "0";
+            document.getElementById("hiddenNumeroDoc").value                =  urlParams.get('ndoc');
             document.getElementById("hiddenProveedor").value                =  urlParams.get('proveedor');
             document.getElementById("hiddenUsuario").value                  =  urlParams.get('usuario');
             document.getElementById("hiddenSku").value                      =  urlParams.get('sku');
             document.getElementById("hiddenDireccion").value                =  document.getElementById("address").value;
             document.getElementById("hiddenZip").value                      =  document.getElementById("zipCode").value;
-           
+            document.getElementById("hiddenNumeroDoc").value                =  urlParams.get('ndoc');
       //FIN LLENA CAMBIOS OCULTOS
+      //obtenerProductosVenta();
       var modal = document.getElementById('myModal');
       modal.style.display = 'block';
     }
@@ -339,52 +339,36 @@ button {
       modal.style.display = 'none';
     }
     
-    function traeCiudades() {
-        $.ajax({
-            url: "${pageContext.request.contextPath}/ciudadServlet",
-            type: "GET",
-            dataType: "json",
-            success: function(ciudades) {
-                llenarCombobox(ciudades);
-            },
-            error: function(xhr, status, error) {
-                    console.log("Error al cargar ciudades: " + error);
-            }
-        });
+        function traeCiudades() {
+         $.ajax({
+        url: "${pageContext.request.contextPath}/ciudadServlet",
+        type: "GET",
+        dataType: "text",
+        success: function(data) {
+            var ubicaciones = data.split("|");
+            llenarCombobox(ubicaciones[0].split(":")[1].split(","), "ciudad");
+            llenarCombobox(ubicaciones[1].split(":")[1].split(","), "provincia");
+            llenarCombobox(ubicaciones[2].split(":")[1].split(","), "region");
+        },
+        error: function(xhr, status, error) {
+            console.log("Error al cargar la información de ubicación: " + error);
+        }
+    });
+}
+
+function llenarCombobox(data, comboboxId) {
+    var combobox = document.getElementById(comboboxId);
+    for (var i = 0; i < data.length; i++) {
+        var option = document.createElement("option");
+        option.text = data[i];
+        combobox.appendChild(option);
     }
-
-            function llenarCombobox(ciudades) {
-                var ciudadSelect = $("#ciudad");
-                var provinciaSelect = $("#provincia");
-                var regionSelect = $("#region");
-
-                ciudadSelect.empty();
-                provinciaSelect.empty();
-                regionSelect.empty();
-
-                $.each(ciudades, function(index, ciudad) {
-                    ciudadSelect.append($("<option>", {
-                        value: ciudad.nombre,
-                        text: ciudad.nombre
-                    }));
-
-                    provinciaSelect.append($("<option>", {
-                        value: ciudad.provincia,
-                        text: ciudad.provincia
-                    }));
-
-                    regionSelect.append($("<option>", {
-                        value: ciudad.region,
-                        text: ciudad.region
-                    }));
-                });
-            }
-                            
+}              
 
     function saveFormData() {
     var formData = {
         rut: $('#rut').val(),
-        nombre: $('#nombreCliente').val(),
+        nombre: $('#hiddenNombre').val(),
         direccion: $('#address').val(),
         zip: $('#zipCode').val(),
         region: $('#region').val(),
@@ -473,7 +457,8 @@ function generatePDF(formData) {
                     { text: fechaFormateada + ' ' + horaFormateada },
                     '-------------------------------------------------------------',
                     { text: 'sku-producto-cantidad-Unitario-total ' },
-                    { text: formData.sku + '-' + formData.nombre + '-' + formData.cantidad + '-' + formData.p1 + '-' + parseInt(formData.p1 * formData.cantidad) },
+                    { text: formData.sku },
+                    { text: formData.nombre + '-' + formData.cantidad + '-' + formData.p1 + '-' + parseInt(formData.p1 * formData.cantidad) },
                     '-------------------------------------------------------------',
                     { text: 'Sub Total: ' + parseInt(total - impuesto) },
                     { text: 'Iva:       ' + impuesto },
@@ -568,7 +553,91 @@ function printTicket() {
     // Initial state: Disable all input fields and buttons
     disableInputFields();
 });
-     
+    
+    function obtenerProductosVenta() {
+                var numerodocumento = document.getElementById("hiddenNumeroDoc").value; // El número de documento que deseas obtener
+
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/productoVentaServlet?numerodocumento=" + numerodocumento,
+                    type: "GET",
+                    dataType: "text",
+                    success: function(data) {
+                        mostrarProductos(data);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error al obtener productos de venta: " + error);
+                    }
+                });
+            }
+
+        function mostrarProductos(data) {
+            var productos = JSON.parse(data); // Parsear el JSON
+
+            var tabla = document.createElement("table");
+            tabla.setAttribute("border", "1");
+
+            // Crear encabezado de la tabla
+            var encabezado = tabla.createTHead();
+            var filaEncabezado = encabezado.insertRow();
+            for (var propiedad in productos[0]) {
+                var celdaEncabezado = filaEncabezado.insertCell();
+                celdaEncabezado.innerHTML = propiedad;
+            }
+
+            // Crear filas con los productos
+            var cuerpoTabla = tabla.createTBody();
+            for (var i = 0; i < productos.length; i++) {
+                var filaProducto = cuerpoTabla.insertRow();
+                for (var propiedad in productos[i]) {
+                    var celdaProducto = filaProducto.insertCell();
+                    celdaProducto.innerHTML = productos[i][propiedad];
+                }
+            }
+
+            // Agregar la tabla al elemento deseado en tu página HTML
+            var contenedorTabla = document.getElementById("tablaProductos");
+            contenedorTabla.innerHTML = ""; // Limpiar el contenido previo
+            contenedorTabla.appendChild(tabla);
+           // obtenerProductosYCantidadDeTabla();
+        }
+
+ /*function obtenerProductosYCantidadDeTabla() {
+    var tabla = document.getElementById("tablaProductos"); // Obtener la tabla por su ID
+    var filas = tabla.getElementsByTagName("tr"); // Obtener todas las filas de la tabla
+    
+    var productosYCantidad = [];
+
+    for (var i = 1; i < filas.length; i++) { // Comenzar desde 1 para omitir la fila de encabezado
+        var celdas = filas[i].getElementsByTagName("td"); // Obtener las celdas de la fila
+
+        var producto = celdas[2].innerText; // El valor de la tercera celda (índice 2) es el producto
+        var cantidad = celdas[3].innerText; // El valor de la cuarta celda (índice 3) es la cantidad
+
+        productosYCantidad.push({
+            producto: producto,
+            cantidad: cantidad
+        });
+    }
+
+    return productosYCantidad;
+}
+function mostrarProductosYCantidadEnTextarea() {
+    var productosYCantidad = obtenerProductosYCantidadDeTabla(); // Llama a la función anterior para obtener los datos
+
+    var textareaProductosCantidad = document.getElementById("textareaProductosCantidad");
+    var contenido = "";
+
+    for (var i = 0; i < productosYCantidad.length; i++) {
+        contenido += productosYCantidad[i].producto + ": " + productosYCantidad[i].cantidad + "\n";
+    }
+
+    textareaProductosCantidad.value = contenido;
+}*/
+
+
+ 
+    
+    
   </script>
 </body>
 </html>

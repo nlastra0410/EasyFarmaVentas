@@ -98,7 +98,7 @@ public class clienteDAO {
         
         while (rs.next()) {
             clienteVO p = new clienteVO();
-            p.setRut(rs.getInt("rut"));
+            p.setRut(rs.getString("rut"));
             p.setDv(rs.getString("dv"));
             p.setNombre(rs.getString("nombre"));
             p.setApellido(rs.getString("apellido"));
@@ -219,7 +219,7 @@ public clienteVO listaCliente(String codProd) {
             
             while (rs.next()) {
                 
-                p.setRut(rs.getInt(1));
+                p.setRut(rs.getString(1));
                 p.setDv(rs.getString(2));
                 p.setNombre(rs.getString(3));
                 p.setApellido(rs.getString(4));

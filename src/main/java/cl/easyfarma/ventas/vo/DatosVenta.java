@@ -29,7 +29,18 @@ public class DatosVenta {
     private String region;
     private String provincia;
     private String ciudad;
+    private int folio;
 
+    public int getFolio() {
+        return folio;
+    }
+
+    public void setFolio(int folio) {
+        this.folio = folio;
+    }
+
+        
+    
     public String getRegion() {
         return region;
     }

@@ -76,6 +76,14 @@
         <servlet-name>ciudadServlet</servlet-name>
         <servlet-class>cl.easyfarma.ventas.controler.ciudadServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ObtenerFolioServlet</servlet-name>
+        <servlet-class>cl.easyfarma.ventas.controler.ObtenerFolioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>productoVentaServlet</servlet-name>
+        <servlet-class>cl.easyfarma.ventas.controler.productoVentaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>usuarioServlets</servlet-name>
         <url-pattern>/usuarioServlets</url-pattern>
@@ -151,6 +159,14 @@
     <servlet-mapping>
         <servlet-name>ciudadServlet</servlet-name>
         <url-pattern>/ciudadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ObtenerFolioServlet</servlet-name>
+        <url-pattern>/ObtenerFolioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>productoVentaServlet</servlet-name>
+        <url-pattern>/productoVentaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

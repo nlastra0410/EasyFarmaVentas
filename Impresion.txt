@@ -1,0 +1,30 @@
+==========================================================
+        FACTURA DE VENTA 103                              
+ Fecha Emision 17/08/2023                                 
+ Hora Emision 00:51:23                                    
+ Vendedor eventas                                         
+==========================================================
+ Kitadol Antigripal DN 18 comp Cant 1 $2867               
+ KITADOL FORTE Cant 1 $950                                
+ Kitadol Forte x 10 Cant 1 $2290                          
+                                                          
+ Total ======================6107                         
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          
+                                                          

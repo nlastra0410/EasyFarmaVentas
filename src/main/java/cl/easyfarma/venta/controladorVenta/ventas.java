@@ -6,7 +6,9 @@ package cl.easyfarma.venta.controladorVenta;
 
 import cl.easyfarma.ventas.dao.Ventas;
 import cl.easyfarma.ventas.vo.DatosVenta;
+import cl.easyfarma.ventas.vo.JsonResponse;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -93,8 +95,22 @@ public class ventas extends HttpServlet {
                 String proveedor = datosVenta.getProveedor();
                 String usuario = datosVenta.getUsuario();
                 String sku = datosVenta.getSku();
+                int folio = datosVenta.getFolio();
                 
-                
+                System.out.println("rutPlus: " + rutPlus);
+                System.out.println("nombre: " + nombre);
+                System.out.println("p1: " + p1);
+                System.out.println("p2: " + p2);
+                System.out.println("cantidad: " + cantidad);
+                System.out.println("totalFinal: " + totalFinal);
+                System.out.println("totalFinalEasy: " + totalFinalEasy);
+                System.out.println("descuento: " + descuento);
+                System.out.println("correo: " + correo);
+                System.out.println("tipoDoc: " + tipoDoc);
+                System.out.println("numeroDoc: " + numeroDoc);
+                System.out.println("proveedor: " + proveedor);
+                System.out.println("usuario: " + usuario);
+                System.out.println("sku: " + sku);
                 
                 //String rutPlus, String nombre, Integer p1, Integer p2, Integer cantidad, Integer totalFinal, Integer totalFinalEasy, Integer descuento, String correo, String tipoDoc, String numeroDoc
                 String mensaje = vent.guardarVenta(rutPlus, 
@@ -110,19 +126,34 @@ public class ventas extends HttpServlet {
                                                     numeroDoc, 
                                                     proveedor, 
                                                     usuario, 
-                                                    sku);
+                                                    sku, 
+                                                    folio);
                 System.out.println("cantidad XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSS");
                 // Simular una respuesta con un objeto Java y convertirlo a JSON usando Gson
                 //Gson gson = new Gson();
-                String jsonResponse = gson.toJson(mensaje);
+                // Crear un objeto JSON de respuesta
+                String respuesta = mensaje;
+                 
+                // Realizar el split utilizando el guión (-) como separador
+                String[] partesRespuesta = respuesta.split("-");
 
-                // Establecer encabezado de respuesta indicando que es JSON
-                response.setContentType("application/json");
-
+                // Acceder a las partes individuales
+                String success = partesRespuesta[0].trim();
+                String numerodocumento = partesRespuesta[1].trim();
+                String tipodocumento = partesRespuesta[2].trim();
+                String mensajeFinal = partesRespuesta[3].trim();
+                
+                System.out.println("success "+success);
+                System.out.println("numerodocumento "+numerodocumento);
+                System.out.println("tipodocumento "+tipodocumento);
+                System.out.println("mensajeFinal "+mensajeFinal);
+                
+                JsonResponse jsonResponse = new JsonResponse(success, numerodocumento, tipodocumento, mensajeFinal);
+                String json = new Gson().toJson(jsonResponse);
                 // Escribir la respuesta JSON en el cuerpo de la respuesta
-                PrintWriter out = response.getWriter();
-                out.print(jsonResponse);
-                out.flush();
+                // Responder con el objeto JSON
+                response.setContentType("application/json");
+                response.getWriter().write(json);
         
         
         }

@@ -36,18 +36,7 @@ public class ciudadServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ciudadServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ciudadServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,11 +54,26 @@ public class ciudadServlet extends HttpServlet {
             processRequest(request, response);
             CiudadDAO ciudadDAO = new CiudadDAO();
             List<ciudad> ciudades = ciudadDAO.obtenerCiudades();
-            String ciudadesJson = new Gson().toJson(ciudades); 
-            System.out.println("CIUDADES JSON "+ciudadesJson);
-            response.setContentType("application/json");
+            List<ciudad> provincias = ciudadDAO.obtenerProvincias();
+            List<ciudad> regiones = ciudadDAO.obtenerRegiones();
+            StringBuilder responseText = new StringBuilder();
+            responseText.append("ciudades:");
+            for (ciudad ciudad : ciudades) {
+                responseText.append(ciudad.getNombre()).append(",");
+            }
+            
+            responseText.append("|provincias:");
+            for (ciudad provincia : provincias) {
+                responseText.append(provincia.getProvincia()).append(",");
+            }
+            responseText.append("|regiones:");
+            for (ciudad region : regiones) {
+                responseText.append(region.getRegion()).append(",");
+            }
+
+            response.setContentType("text/plain");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(ciudadesJson);
+            response.getWriter().write(responseText.toString());
     }
 
     /**

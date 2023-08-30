@@ -10,7 +10,7 @@ package cl.easyfarma.ventas.vo;
  */
 public class clienteVO {
    
-private Integer rut;
+private String rut;
 private String  dv;
 private String  nombre;
 private String  apellido;
@@ -20,12 +20,23 @@ private String  plus;
 private String  telefono;
 private String  profesion;
 private String  fechanac;
+private String  sinCliente;
 
-    public Integer getRut() {
+    public String getSinCliente() {
+        return sinCliente;
+    }
+
+    public void setSinCliente(String sinCliente) {
+        this.sinCliente = sinCliente;
+    }
+
+
+
+    public String getRut() {
         return rut;
     }
 
-    public void setRut(Integer rut) {
+    public void setRut(String rut) {
         this.rut = rut;
     }
 

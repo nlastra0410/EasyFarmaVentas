@@ -9,12 +9,15 @@ cl\easyfarma\ventas\conexion\comprobar.class
 cl\easyfarma\ventas\controler\buscadorClientePredictivo.class
 cl\easyfarma\ventas\controler\productoServlet.class
 cl\easyfarma\ventas\controler\usuarioServlets.class
+cl\easyfarma\ventas\vo\JsonResponse.class
 cl\easyfarma\ventas\vo\productoVO.class
 cl\easyfarma\venta\modelo\ProductoDB.class
 cl\easyfarma\venta\modelo\UsuarioDB.class
 cl\easyfarma\ventas\controler\ciudadServlet.class
 cl\easyfarma\ventas\dao\clienteDAO.class
 cl\easyfarma\ventas\controler\clienteServlet.class
+cl\easyfarma\ventas\controler\ObtenerFolioServlet.class
+cl\easyfarma\ventas\controler\productoVentaServlet.class
 cl\easyfarma\ventas\vo\usuarioVO.class
 cl\easyfarma\ventas\conexion\conexion.class
 cl\easyfarma\ventas\controler\empleadoServlet.class
@@ -23,6 +26,7 @@ cl\easyfarma\ventas\controler\buscarClientePlus.class
 cl\easyfarma\ventas\conexion\ConexionDB.class
 cl\easyfarma\ventas\dao\productoDAO.class
 cl\easyfarma\ventas\vo\clienteVO.class
+cl\easyfarma\ventas\vo\ProductoVenta.class
 cl\easyfarma\venta\controladorVenta\SaveDataServlet.class
 cl\easyfarma\venta\controladorVenta\ventas.class
 cl\easyfarma\ventas\controler\CerrarSesionServlet.class
@@ -32,6 +36,7 @@ cl\easyfarma\ventas\vo\ciudad.class
 cl\easyfarma\ventas\controler\buscadorFarmacia.class
 cl\easyfarma\ventas\vo\Productos.class
 cl\easyfarma\ventas\controler\buscadorPredictivo.class
+cl\easyfarma\venta\controladorVenta\ImpresionTicket.class
 cl\easyfarma\ventas\dao\Ventas.class
 cl\easyfarma\ventas\controler\buscadorEmpleadoPredictivo.class
 cl\easyfarma\venta\controladorVenta\ProductoGSON.class
