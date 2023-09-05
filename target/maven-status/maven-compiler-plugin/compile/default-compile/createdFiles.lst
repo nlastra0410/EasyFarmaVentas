@@ -27,6 +27,7 @@ cl\easyfarma\ventas\conexion\ConexionDB.class
 cl\easyfarma\ventas\dao\productoDAO.class
 cl\easyfarma\ventas\vo\clienteVO.class
 cl\easyfarma\ventas\vo\ProductoVenta.class
+cl\easyfarma\venta\controladorVenta\productosVendidos.class
 cl\easyfarma\venta\controladorVenta\SaveDataServlet.class
 cl\easyfarma\venta\controladorVenta\ventas.class
 cl\easyfarma\ventas\controler\CerrarSesionServlet.class

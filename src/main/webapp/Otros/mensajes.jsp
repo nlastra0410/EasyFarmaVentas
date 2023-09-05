@@ -78,13 +78,13 @@
                 <a href="${pageContext.request.contextPath}/Otros/inventario.jsp" > Inventario </a>
               </li>
               <li>
-                <a href="${pageContext.request.contextPath}/Otros/ventaOnline.jsp" > Venta Online </a>
+                <a href="${pageContext.request.contextPath}/Otros/ventaOnline.jsp" > Retiro/Despacho</a>
               </li>
               <li>
                 <a href="${pageContext.request.contextPath}/Otros/ajustes.jsp" > Ajustes </a>
               </li>
               <li>
-                <a href="${pageContext.request.contextPath}/Otros/mensajes.jsp" > Mensajes </a>
+                <!-- ======== <a href="${pageContext.request.contextPath}/Otros/mensajes.jsp" > Mensajes </a> =========== -->
               </li>
             </ul>
           </li>

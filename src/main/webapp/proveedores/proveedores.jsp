@@ -78,7 +78,7 @@
                 <a href="inventario.jsp" > Inventario </a>
               </li>
               <li>
-                <a href="ventaOnline.jsp" > Venta Online </a>
+                <a href="ventaOnline.jsp" > Retiro/Despacho</a>
               </li>
               <li>
                 <a href="ajustes.jsp" > Ajustes </a>

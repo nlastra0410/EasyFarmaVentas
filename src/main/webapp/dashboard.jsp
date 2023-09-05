@@ -81,7 +81,7 @@
                 <a href="Otros/inventario.jsp" > Inventario </a>
               </li>
               <li>
-                <a href="Otros/ventaOnline.jsp" > Venta Online </a>
+                <a href="Otros/ventaOnline.jsp" > Retiro/Despacho</a>
               </li>
               <li>
                 <a href="Otros/ajustes.jsp" > Ajustes </a>

@@ -718,60 +718,7 @@ System.out.println("editar productos 341");
     }
     return respuesta;
 }
-
-    /*public ArrayList<String> getProductos(String codProd) {
-        ArrayList<String> lista = new ArrayList<>();
-        PreparedStatement ps;
-        ResultSet rs;
-        conexion c = new conexion();
-        Connection con;
-        System.out.println("codProd "+codProd);
-        String sql = "SELECT  "
-                        + "nombre "
-                        + "FROM easyvent_easyfarmaventas.productofarma "
-                        + "WHERE activo = 'Si' "
-                        + "and nombre like '%"+codProd+"%' or principioactivo like '%"+codProd+"%' or sku like '%"+codProd+"%' ORDER BY nombre ASC limit 100 ";
-        String respuesta = "";
-        try {     
-            con = c.conectar();
-            ps = con.prepareStatement(sql);
-            System.out.println("el SQL IMPRESO ES: "+sql);
-         //   ps.setString(1, codProd +"%");
-         //   ps.setString(2, codProd +"%");
-         //   ps.setString(3, codProd +"%");
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                lista.add(rs.getString("nombre"));
-                respuesta = "Todo OK";
-            }
-            con.close();
-        } catch (SQLException ex) {
-            System.out.println("A " + ex.getMessage());
-            respuesta = "Error " + ex.getMessage();
-        } catch (Exception ex) {
-            System.out.println("B " + ex.getMessage());
-            respuesta = "Error " + ex.getMessage();
-        }         
-        return lista;
-    }   
-    public ArrayList<String> getProductos(String codProd) {
-    ArrayList<String> lista = new ArrayList<>();
-    try (Connection con = new conexion().conectar();
-         CallableStatement statement = con.prepareCall("{ CALL getProductos(?) }")) {
-        statement.setString(1, codProd);
-        try (ResultSet rs = statement.executeQuery()) {
-            while (rs.next()) {
-                lista.add(rs.getString("nombre"));
-            }
-        }
-        return lista;
-    } catch (SQLException ex) {
-        System.err.println("Error al obtener productos: " + ex.getMessage());
-    } catch (Exception ex) {
-        System.err.println("Error inesperado: " + ex.getMessage());
-    }
-    return lista;
-}*/
+ 
     public ArrayList<String> getProductos(String codProd) {
     ArrayList<String> lista = new ArrayList<>();
     try (Connection con = new conexion().conectar();
@@ -809,6 +756,134 @@ System.out.println("editar productos 341");
     }
     return lista;
 }
+       
+ public ResultSet obtenerProductosMasVendidosDia() {
+        usuarioVO usu = null;
+        conexion con;
+        Connection cn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        System.out.println("editar productos 293");
+        String respuesta = "";
+        con = new conexion();
+        CallableStatement  ps = null;
+        ResultSet  resultados = null;
+        try {
+            // Llamar al procedimiento almacenado "obtenerProductosMasVendidosDia"
+            cn = con.conectar();
+            ps = cn.prepareCall("{call obtenerProductosMasVendidosDia()}");
+            
+            // Si el procedimiento devuelve un ResultSet, debes usar registerOutParameter
+            ps.registerOutParameter(1, Types.OTHER);
+
+            // Ejecutar el procedimiento almacenado
+            ps.execute();
+
+            // Obtener el ResultSet de la salida del procedimiento almacenado
+            resultados = (ResultSet) ps.getObject(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar la conexión y el CallableStatement cuando hayas terminado
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return resultados;
+    }
+ 
+
+    public ResultSet obtenerProductosMasVendidosSemana() {
+        usuarioVO usu = null;
+        conexion con;
+        Connection cn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        System.out.println("editar productos 293");
+        String respuesta = "";
+        con = new conexion();
+        CallableStatement  ps = null;
+        ResultSet  resultados = null;
+
+        try {
+            cn = con.conectar();
+            // Llamar al procedimiento almacenado "obtenerProductosMasVendidosSemana"
+            ps = cn.prepareCall("{call obtenerProductosMasVendidosSemana()}");
+            
+            // Si el procedimiento devuelve un ResultSet, debes usar registerOutParameter
+            ps.registerOutParameter(1, Types.OTHER);
+
+            // Ejecutar el procedimiento almacenado
+            ps.execute();
+
+            // Obtener el ResultSet de la salida del procedimiento almacenado
+            resultados = (ResultSet) ps.getObject(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar la conexión y el CallableStatement cuando hayas terminado
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return resultados;
+    }
+
+    public ResultSet obtenerProductosMasVendidosMes() {
+        usuarioVO usu = null;
+        conexion con;
+        Connection cn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        System.out.println("editar productos 293");
+        String respuesta = "";
+        con = new conexion();
+        CallableStatement  cstmt = null;
+        ResultSet  resultados = null;
+
+        try {
+            cn = con.conectar();
+            // Llamar al procedimiento almacenado "obtenerProductosMasVendidosMes"
+            cstmt = cn.prepareCall("{call obtenerProductosMasVendidosMes()}");
+            
+            // Si el procedimiento devuelve un ResultSet, debes usar registerOutParameter
+            cstmt.registerOutParameter(1, Types.OTHER);
+
+            // Ejecutar el procedimiento almacenado
+            cstmt.execute();
+
+            // Obtener el ResultSet de la salida del procedimiento almacenado
+            resultados = (ResultSet) cstmt.getObject(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar la conexión y el CallableStatement cuando hayas terminado
+            if (cstmt != null) {
+                try {
+                    cstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return resultados;
+    }
+ 
+
+       
+       
+       
 
     }
 

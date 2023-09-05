@@ -84,6 +84,10 @@
         <servlet-name>productoVentaServlet</servlet-name>
         <servlet-class>cl.easyfarma.ventas.controler.productoVentaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>productosVendidos</servlet-name>
+        <servlet-class>cl.easyfarma.venta.controladorVenta.productosVendidos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>usuarioServlets</servlet-name>
         <url-pattern>/usuarioServlets</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>productoVentaServlet</servlet-name>
         <url-pattern>/productoVentaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>productosVendidos</servlet-name>
+        <url-pattern>/productosVendidos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
